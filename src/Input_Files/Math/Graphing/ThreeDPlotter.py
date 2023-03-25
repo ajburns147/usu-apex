@@ -4,7 +4,7 @@ class ThreeDPlotter(TopicFactory):
     def __init__(self):
 
         self.input_dict = {
-            "function": ["", "", "length", "", ""],
+            "function": ["", "sin(sqrt(x**2 + y**2))", "length", "", ""],
         }
 
         self.info = {
@@ -60,4 +60,4 @@ class ThreeDPlotter(TopicFactory):
         ax.set_zlabel('Z Label')
 
         # Show the plot
-        plt.show()
+        plt.show(block="false")
