@@ -29,9 +29,10 @@ def solve(info):
                 output_dict[i][0] = sol
             except Exception:
                 pass
+    if formula != "":
+        info["output"] = output_dict
 
-    info["output"] = output_dict
-
+    print(info)
     return info
 
 
