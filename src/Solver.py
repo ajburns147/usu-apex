@@ -3,6 +3,7 @@ import sympy as sp
 from math import floor, log10
 from copy import deepcopy
 
+
 def solve(info):
     inputs = info["input"]
     formula = info["formula"]
@@ -13,15 +14,15 @@ def solve(info):
 
     output_dict = deepcopy(inputs)
 
-    bonus_method(info)
+    extra = bonus_method(info)
 
     if formula != "":
         sol = solveEquation(formula, inputs)
-
         list_to_5_sig_figs(sol)
+    else:
+        info["extra"] = extra
 
     # print(f"{sol=}")
-
 
     for i in inputs:
         if safe_float(inputs[i][0], ""):
@@ -29,7 +30,8 @@ def solve(info):
         else:
             output_dict[i] = sol
 
-    info["output"] = output_dict
+    if "output" not in info:
+        info["output"] = output_dict
 
     print(info)
     return info
@@ -41,6 +43,7 @@ def safe_float(value, special_type):
         return result
     except (ValueError, TypeError):
         result = None
+
 
 def unitConvert(inputs):
     for i, element in enumerate(inputs):
@@ -66,6 +69,7 @@ def unitConvert(inputs):
         if not safe_float(inputs[element][0], "") is None:
             inputs[element][0] = unit_dict[inputs[element][3]] * safe_float(inputs[element][0], "")
 
+
 def solveEquation(formula, inputs):
     # Define symbols for variables based on the keys of the input_dict
     symbols_list = symbols(' '.join(input_dict.keys()))
@@ -84,9 +88,9 @@ def solveEquation(formula, inputs):
 
     return sol
 
+
 def list_to_5_sig_figs(sol):
     for i, element in enumerate(sol):
         sol[i] = round(float(element), -int(floor(log10(abs(element)))) + 4)
-
 
 # solve(info)
