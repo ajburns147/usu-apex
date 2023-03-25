@@ -1,6 +1,7 @@
 import os
 import tkinter as tk
 from tkinter import ttk
+import Solver
 
 # All the callback functions here
 
@@ -17,6 +18,7 @@ def courseSelect(event):
     sub_box['values'] = file_list
 
 
+# Function for when a subject is selected
 def subSelect(event):
     topic_box.set("Topic")
     course_txt = course_box.get()
@@ -25,6 +27,7 @@ def subSelect(event):
     topic_box['values'] = file_list
 
 
+# Function for when a topic is selected
 def topicSelect(event):
     # Erase the current inputs
     note_label.config(text="Note:\n")
@@ -68,6 +71,7 @@ def topicSelect(event):
     execute.config(state="normal")
 
 
+# Function for when the execute button is pressed
 def execute():
     # Update info with parameters given by the user
     global current_object
@@ -82,6 +86,10 @@ def execute():
             info['input'][label_txt][3] = input_children[itr + 2].get()
         itr += 1
 
+    # Call the solver to solve the equation
+    Solver.solve(current_object.giveInfo())
+
+# End of callback functions
 
 # Create root
 root = tk.Tk()
