@@ -8,3 +8,6 @@ class length(UnitFactory):
             "mm": .001,
             "ft": 0.3048,
         }
+
+    def giveDict(self):
+        return self.unit_dict
