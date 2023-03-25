@@ -1,11 +1,8 @@
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-from sympy.parsing.sympy_parser import (parse_expr, standard_transformations, implicit_multiplication_application)
 from TopicFactory import TopicFactory
 
 class ThreeDPlotter(TopicFactory):
     def __init__(self):
+
         self.input_dict = {
             "function": ["", "", "length", "", ""],
         }
@@ -25,6 +22,11 @@ class ThreeDPlotter(TopicFactory):
     def Bonus(self, info):
         return self.selfPlot(info["input"]["function"][0])
     def selfPlot(self, function):
+        import numpy as np
+        import matplotlib.pyplot as plt
+        from mpl_toolkits.mplot3d import Axes3D
+        from sympy.parsing.sympy_parser import (parse_expr, standard_transformations,
+                                                implicit_multiplication_application)
         # Define the function to plot as a string
         function_str = function
 

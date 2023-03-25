@@ -119,7 +119,7 @@ def execute():
 
     # Populate the output
     outputwin = tk.Tk()
-    outputwin.geometry("300x300")
+    outputwin.geometry("350x350")
     formula = tk.Label(outputwin, text=output_info['formula'])
     formula.grid(row=0)
     inputs = tk.Label(outputwin, text="Input from user:")
