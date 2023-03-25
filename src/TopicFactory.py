@@ -7,6 +7,5 @@ class TopicFactory(ABC):
     def giveInfo(self):
         pass
 
-    @abstractmethod
-    def Bonus(self):
+    def Bonus(self, info):
         pass
