@@ -65,7 +65,7 @@ def topicSelect(event):
     note_text.insert("1.0", "Note:\n"+note)
 
     # Get the units
-    itr=0
+    itr = 0
     for i, element in enumerate(info['input']):
         # print(f"Units.{inputs[element][2]}")
         module = __import__(f"Units.{info['input'][element][2]}", fromlist=['*'])
@@ -112,7 +112,6 @@ def execute():
 
     # Call the solver to solve the equation
     output_info = Solver.solve(info)
-    #print(output_info)
 
     # Populate the output
     outputwin = tk.Tk()
