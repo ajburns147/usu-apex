@@ -10,7 +10,7 @@ def solve(info):
     solve_method = info["solve_method"]
     bonus_method = info["Bonus"]
 
-    unitConvert(inputs)
+    unitConvert(inputs, solve_method)
     output_dict = deepcopy(inputs)
     extra = bonus_method(info)
 
@@ -29,9 +29,10 @@ def solve(info):
                 output_dict[i][0] = sol
             except Exception:
                 pass
+    if formula != "":
+        info["output"] = output_dict
 
-    info["output"] = output_dict
-
+    print(info)
     return info
 
 
@@ -43,7 +44,7 @@ def safe_float(value, special_type):
         result = None
 
 
-def unitConvert(inputs):
+def unitConvert(inputs, solve_method):
     for i, element in enumerate(inputs):
         # print(f"Units.{inputs[element][2]}")
         module = __import__(f"Units.{inputs[element][2]}", fromlist=['*'])
@@ -64,7 +65,7 @@ def unitConvert(inputs):
         # print(f"{unit_dict[inputs[element][3]]=}")
         # print(f"{inputs[element]=}")
 
-        if not safe_float(inputs[element][0], "") is None:
+        if not safe_float(inputs[element][0], "") is None and not solve_method == "beam":
             inputs[element][0] = unit_dict[inputs[element][3]] * safe_float(inputs[element][0], "")
 
 
