@@ -34,7 +34,8 @@ def subSelect(event):
 # Function for when a topic is selected
 def topicSelect(event):
     # Erase the current inputs
-    note_label.config(text="Note:\n")
+    note_text.delete("1.0", tk.END)
+    note_text.insert("1.0", "Note:\n")
     for child in input_frame.winfo_children():
         child.destroy()
 
@@ -60,7 +61,8 @@ def topicSelect(event):
 
     # Create the info boxes in the GUI
     note = info['Note']
-    note_label.config(text="Note:\n"+note)
+    note_text.delete("1.0", tk.END)
+    note_text.insert("1.0", "Note:\n"+note)
 
     # Get the units
     for i, element in enumerate(info['input']):
@@ -194,8 +196,9 @@ sub_box.grid(row=1, column=0)
 topic_box.grid(row=2, column=0)
 
 # Create the note and input label and go button
-note_label = tk.Label(note_frame, text="Note: ")
-note_label.grid(row=0)
+note_text = tk.Text(note_frame)
+note_text.insert(tk.END, "Note:\n")
+note_text.grid(row=0)
 
 input_label = tk.Label(input_frame, text="Inputs")
 input_label.grid(row=0)

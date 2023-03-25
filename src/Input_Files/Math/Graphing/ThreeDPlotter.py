@@ -11,7 +11,10 @@ class ThreeDPlotter(TopicFactory):
         self.info = {
             "input": self.input_dict,
             "formula": "",
-            "Note": "This is a 3D Plotter",
+            "Note": "This is a 3D Plotter\n"
+                    "Write the function so that the\n"
+                    "dependant variable is omitted.\n"
+                    "i.e. write z = x+y as x+y.",
             "solve_method": "",
             "plot_method": False,
             "Bonus": self.Bonus
