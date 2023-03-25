@@ -6,7 +6,7 @@ class pythagorean_theorem(TopicFactory):
         self.input_dict = {
             "a": ["", 3, "length", "", ""],
             "b": ["", 4, "length", "", ""],
-            "c": ["", 5, "length", "", ""],
+            "c": ["", "", "length", "", ""],
                       }
 
         self.info = {

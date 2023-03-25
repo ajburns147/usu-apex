@@ -24,7 +24,11 @@ def subSelect(event):
     course_txt = course_box.get()
     sub_txt = sub_box.get()
     file_list = os.listdir(f"Input_Files/{course_txt}/{sub_txt}")
-    topic_box['values'] = file_list
+    good_files = []
+    for i in file_list:
+        if i[-3:] == ".py":
+            good_files.append(i[:-3])
+    topic_box['values'] = good_files
 
 
 # Function for when a topic is selected
@@ -38,7 +42,7 @@ def topicSelect(event):
     course_txt = course_box.get()
     sub_txt = sub_box.get()
     topic_txt = topic_box.get()
-    mod_name = f"Input_Files.{course_txt}.{sub_txt}.{topic_txt[:-3]}"
+    mod_name = f"Input_Files.{course_txt}.{sub_txt}.{topic_txt}"
 
     # Import the specified module and get make an object from the class inside
     module = __import__(mod_name, fromlist=['*'])
@@ -84,6 +88,7 @@ def topicSelect(event):
     for i in info['input']:
         label = tk.Label(input_frame, text=i)
         entry = tk.Entry(input_frame)
+        entry.insert(0, info['input'][i][1])
         unit = ttk.Combobox(input_frame, values=list(unit_dict.keys()))
         unit.set(default_unit)
         label.grid(row=itr, column=0)
@@ -114,7 +119,7 @@ def execute():
 
     # Populate the output
     outputwin = tk.Tk()
-    outputwin.geometry = "300x300"
+    outputwin.geometry("300x300")
     formula = tk.Label(outputwin, text=output_info['formula'])
     formula.grid(row=0)
     inputs = tk.Label(outputwin, text="Input from user:")
