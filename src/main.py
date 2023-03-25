@@ -4,6 +4,9 @@ from tkinter import ttk
 
 # All the callback functions here
 
+# The current object to be passed around
+current_object = None
+
 
 # Function for when a course is selected from the course drop down box
 def courseSelect(event):
@@ -23,6 +26,11 @@ def subSelect(event):
 
 
 def topicSelect(event):
+    # Erase the current inputs
+    note_label.config(text="Note:\n")
+    for child in input_frame.winfo_children():
+        child.destroy()
+
     # Build the file path
     course_txt = course_box.get()
     sub_txt = sub_box.get()
@@ -42,10 +50,27 @@ def topicSelect(event):
                 break
 
     my_obj = class_obj()
-    info = my_obj.getInfo()
+    info = my_obj.giveInfo()
 
     # Create the info boxes in the GUI
-    
+    note = info['Note']
+    note_label.config(text="Note:\n"+note)
+    itr = 0
+    for i in info['input']:
+        label = tk.Label(input_frame, text=i)
+        entry = tk.Entry(input_frame)
+        unit = ttk.Combobox(input_frame, values=["mm", "m"])
+        unit.set("mm")
+        label.grid(row=itr, column=0)
+        entry.grid(row=itr, column=1)
+        unit.grid(row=itr, column=2)
+        itr += 1
+
+    execute.config(state="normal")
+
+
+def execute():
+    pass
 
 
 # Create root
@@ -90,12 +115,15 @@ course_box.grid(row=0, column=0)
 sub_box.grid(row=1, column=0)
 topic_box.grid(row=2, column=0)
 
-# Create the note and input label
+# Create the note and input label and go button
 note_label = tk.Label(note_frame, text="Note: ")
 note_label.grid(row=0)
 
 input_label = tk.Label(input_frame, text="Inputs")
 input_label.grid(row=0)
+
+execute = tk.Button(bottom_frame, text="Execute", command=execute, state="disabled")
+execute.pack(side="bottom")
 
 # run the mainloop to initialize the GUI
 tk.mainloop()
