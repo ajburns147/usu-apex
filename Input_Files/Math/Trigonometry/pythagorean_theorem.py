@@ -9,7 +9,7 @@ class Pyhagoreantheorem(TopicFactory):
 
         self.info = {
              "input": self.input_dict,
-             "formula": "a**2 + b**2 = c**2",
+             "formula": "a**2 + b**2 == c**2",
              "Note": "This is Pythagoras's theorem",
              "solve_method": "",
              "plot_method": False,
