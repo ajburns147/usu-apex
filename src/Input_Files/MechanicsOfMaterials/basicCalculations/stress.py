@@ -10,7 +10,7 @@ class stress(TopicFactory):
 
         self.info = {
              "input": self.input_dict,
-             "formula": "stress = F/A",
+             "formula": "stress == F/A",
              "Note": "This is a stress calculator",
              "solve_method": "",
              "plot_method": False,
