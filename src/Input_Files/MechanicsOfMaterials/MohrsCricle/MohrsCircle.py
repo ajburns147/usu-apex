@@ -4,8 +4,6 @@ from TopicFactory import TopicFactory
 
 # Define the input stresses
 
-
-
 class mohrsCircle(TopicFactory):
     def __init__(self):
         self.input_dict = {
@@ -27,7 +25,7 @@ class mohrsCircle(TopicFactory):
         return self.info
 
     def Bonus(self, info):
-        return self.selfSolve(info["sigmaX"],info["sigmaY"],info["tauXY"])
+        return self.selfSolve(info["input"]["sigmaX"][0], info["input"]["sigmaY"][0], info["input"]["tauXY"][0])
     def selfSolve(self, sigma_x, sigma_y, tau_xy):
         Center = (sigma_x + sigma_y)/2
         Radius = math.sqrt(((sigma_x-sigma_y)/2)**2 + tau_xy**2)
