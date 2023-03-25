@@ -4,9 +4,9 @@ from TopicFactory import TopicFactory
 class Cantilever(TopicFactory):
     def __init__(self):
         self.input_dict = {
-            "Forcex": ["", "", "force", "", ""],
-            "Forcey": ["", "", "force", "", ""],
-            "Moment": ["", "", "torque", "", ""],
+            "Forcex": ["", "75 24*np.cos(.5236)", "force", "", ""],
+            "Forcey": ["", "-42 60 -24*np.sin(.5236)", "force", "", ""],
+            "Moment": ["", "20 -24*np.sin(5236)*3", "torque", "", ""],
         }
 
         self.info = {
