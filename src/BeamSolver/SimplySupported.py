@@ -5,8 +5,8 @@ x, y2, y1 = sympy.symbols('x y2 y1')
 # Example input list with string numbers
 output_dict = ["17 -38*np.cos(np.pi/4)", "-10 30 38*np.cos(np.pi/4)", "-10 90 (5*38*np.cos(np.pi/4))"]
 
-variables_passed = []
-
+variables_passed = [[0], [y1, y2, -10], [-20, 4]]
+"""""
 for string in output_dict:
     split_string = string.split()
     new_sublist = []
@@ -18,7 +18,7 @@ for string in output_dict:
     variables_passed.append(new_sublist)
 
 print(variables_passed)
-
+"""
 part1 = []
 part2 = []
 for i in range(3):
