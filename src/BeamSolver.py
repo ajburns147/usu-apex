@@ -1,65 +1,25 @@
+import sympy
 import numpy as np
 
+import sympy
+variables_passed = [[17, 38*np.cos(45)],[-10, 30, 38*np.cos(45)], [-10, 90, (5*38*np.cos(45))]]
 
-def gaussian_elimination(A, b):
-    """
-    Solves a system of linear equations using Gaussian elimination.
+x, y, z = sympy.symbols('x y z')
 
-    Parameters:
-        A (ndarray): Coefficient matrix.
-        b (ndarray): Right-hand side vector.
+variables=[x,y,z]
 
-    Returns:
-        ndarray: Solution vector.
-    """
-    # Augment the matrix with the right-hand side vector
-    M = np.column_stack((A, b))
+for i in range(len(variables_passed)):
+    variables_passed[i].extend([variables[i]])
 
-    # Apply row operations to create an upper triangular matrix
-    n_rows, n_cols = M.shape
-    for i in range(n_rows):
-        # Find pivot row
-        max_row = i
-        for j in range(i + 1, n_rows):
-            if abs(M[j, i]) > abs(M[max_row, i]):
-                max_row = j
+print(variables_passed)
 
-        # Swap rows to move pivot to (i, i)
-        M[[i, max_row]] = M[[max_row, i]]
+# Define the equations
+eq1 = sympy.Eq(sum(variables_passed[0]), 0)
+eq2 = sympy.Eq(sum(variables_passed[1]), 0)
+eq3 = sympy.Eq(sum(variables_passed[2]), 0)
 
-        # Eliminate entries below (i, i)
-        for j in range(i + 1, n_rows):
-            factor = M[j, i] / M[i, i]
-            M[j] -= factor * M[i]
+# Solve the system of equations
+sol = sympy.solve((eq1, eq2, eq3), (x, y, z))
 
-    # Solve for variables using back-substitution
-    x = np.zeros(n_rows)
-    for i in range(n_rows - 1, -1, -1):
-        x[i] = M[i, n_cols - 1] / M[i, i]
-        for j in range(i - 1, -1, -1):
-            M[j, n_cols - 1] -= M[j, i] * x[i]
-
-    return x
-
-A = []
-
-for i in output_dict:
-    row = []
-    for j in list1:
-        row.append(j)
-    A.append(row)
-
-
-
-#A = np.array([[2, 1, -1, 1],
- #             [4, -6, 0, -7],
-  #            [4, -2, 2, 8],
-   #           [1, 1, 1, 1]])
-
-for i in output_dict:
-    b=[]
-    b.append(0)
-
-x = gaussian_elimination(A, b)
-
-print(x)
+# Print the solution
+print(sol)
