@@ -7,14 +7,14 @@ class Velocity_in_y(TopicFactory):
         g = 9.81
 
         self.input_dict = {
-            "Vy": ["", 3, "velocity", "", ""],
-            "Vyi": ["", 4, "velocity", "", ""],
+            "vy": ["", 3, "velocity", "", ""],
+            "vyi": ["", 4, "velocity", "", ""],
             "time": ["", 5, "time", "", ""],
                       }
 
         self.info = {
              "input": self.input_dict,
-             "formula": f"Vy == Vyi - {g} * time",
+             "formula": f"vy == vyi - {g} * time",
              "Note": "This is the velocity of the projectile at any time",
              "solve_method": "",
              "plot_method": False,
