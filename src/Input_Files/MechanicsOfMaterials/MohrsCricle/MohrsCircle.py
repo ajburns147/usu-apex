@@ -7,9 +7,9 @@ from TopicFactory import TopicFactory
 class mohrsCircle(TopicFactory):
     def __init__(self):
         self.input_dict = {
-            "sigmaX": ["", "", "length", "", ""],
-            "sigmaY": ["", "", "length", "", ""],
-            "tauXY": ["", "", "length", "", ""],
+            "sigmaX": ["", "40", "stress", "", ""],
+            "sigmaY": ["", "-30", "stress", "", ""],
+            "tauXY": ["", "20", "stress", "", ""],
                       }
 
         self.info = {
@@ -217,8 +217,8 @@ class mohrsCircle(TopicFactory):
 
         # Set the aspect ratio and axis labels
         ax1.set_aspect('equal', 'box')
-        ax1.set_xlabel('Normal stress (MPa)')
-        ax1.set_ylabel('Shear stress (MPa)')
+        ax1.set_xlabel('Normal stress (kPa)')
+        ax1.set_ylabel('Shear stress (kPa)')
         output = {
             "sigma1": [sigma1, "", "length", "", ""],
             "sigma2": [sigma2, "", "length", "", ""],
