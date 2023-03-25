@@ -140,7 +140,7 @@ def execute():
     itr += 1
     for i in output_info['output']:
         label = tk.Label(outputwin, text=i)
-        entry = tk.Label(outputwin, text=str(output_info['output'][i]))
+        entry = tk.Label(outputwin, text=str(output_info['output'][i][0]))
         unit = ttk.Label(outputwin, text=output_info['output'][i][3])
         label.grid(row=itr, column=0)
         entry.grid(row=itr, column=1)
@@ -154,7 +154,7 @@ def execute():
 root = tk.Tk()
 root.geometry('500x500')
 menubar = tk.Menu(root)
-
+menubar.add_cascade(label=tk_default._default._default)
 
 # Initialize frames for organization
 top_frame = tk.Frame(root)
