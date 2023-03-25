@@ -11,18 +11,19 @@ def solve(info):
 
     unitConvert(inputs)
 
-    if solve_method != "":
-        bonus_method(info)
+    output_dict = deepcopy(inputs)
 
-    sol = solveEquation(formula, inputs)
+    bonus_method(info)
 
-    list_to_5_sig_figs(sol)
+    if formula != "":
+        sol = solveEquation(formula, inputs)
+
+        list_to_5_sig_figs(sol)
 
     # print(f"{sol=}")
 
-    output_dict = deepcopy(input_dict)
 
-    for i in input_dict:
+    for i in inputs:
         if safe_float(inputs[i][0], ""):
             output_dict[i] = safe_float(inputs[i][0], "")
         else:
@@ -33,25 +34,6 @@ def solve(info):
     print(info)
     return info
 
-
-
-def Bonus(a):
-    pass
-
-input_dict = {
-            "a": ["3", 3, "length", "km", ""],
-            "b": ["4", 4, "length", "m", ""],
-            "c": ["", 5, "length", "m", ""],
-            }
-
-info = {
-     "input": input_dict,
-     "formula": "a**2 + b**2 == c**2",
-     "Note": "This is Pythagoras's theorem",
-     "solve_method": "",
-     "plot_method": False,
-     "Bonus": Bonus("")
-}
 
 def safe_float(value, special_type):
     try:
@@ -107,4 +89,4 @@ def list_to_5_sig_figs(sol):
         sol[i] = round(float(element), -int(floor(log10(abs(element)))) + 4)
 
 
-solve(info)
+# solve(info)
