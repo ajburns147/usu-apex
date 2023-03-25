@@ -67,6 +67,7 @@ def solve(info):
     info["output"] = output_dict
 
     print(info)
+    return(info)
 
 
 def Bonus(a):
