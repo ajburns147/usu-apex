@@ -13,10 +13,12 @@ class Cantilever(TopicFactory):
             "input": self.input_dict,
             "formula": "",
             "Note": """
-                    This is a cantilerver beam solver. Input all of the x force components into the text box separated by a 
-                    space. All moments are taken around the reaction force location at the wall. Input the moment components
-                    into the text box in the same way as the forces. Force magnitudes multiplied by their respective trig function
-                    are acceptable inputs.
+                    This is a cantilerver beam solver. Input all of the x force 
+                    components into the text box separated by a space. All moments 
+                    are taken around the reaction force location at the wall.
+                    Input the moment components into the text box in the same way 
+                    as the forces. Force magnitudes multiplied by their respective 
+                    trig function are acceptable inputs.
                     """,
             "solve_method": "",
             "plot_method": False,
@@ -69,5 +71,6 @@ class Cantilever(TopicFactory):
 
         # Print the solution
         print(sol1)
+        output = sol1
 
-        return sol1
+        return output
