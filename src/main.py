@@ -38,13 +38,13 @@ top_frame.pack(side='top')
 bottom_frame = tk.Frame(root)
 bottom_frame.pack(side='bottom')
 
-file_frame = tk.Frame(top_frame)
+file_frame = tk.Frame(top_frame, relief='groove', bg='blue')
 file_frame.pack(side='left')
 
-note_frame = tk.Frame(top_frame, relief='groove')
+note_frame = tk.Frame(top_frame, relief='groove', bg='green')
 note_frame.pack(side="right")
 
-input_frame = tk.Frame(bottom_frame, relief='groove')
+input_frame = tk.Frame(bottom_frame, relief='groove', bg='red')
 input_frame.pack()
 
 # create subject drop down boxes
@@ -65,12 +65,16 @@ sub_box.bind("<<ComboboxSelected>>", subSelect)
 topic_box.bind("<<ComboboxSelected>>", topicSelect)
 
 # Pack all the drop-downs in tight
-course_box.grid(row=0)
-sub_box.grid(row=1)
-topic_box.grid(row=2)
+course_box.grid(row=0, column=0)
+sub_box.grid(row=1, column=0)
+topic_box.grid(row=2, column=0)
 
-# Create the note label
+# Create the note and input label
 note_label = tk.Label(note_frame, text="Note: ")
+note_label.grid(row=0)
+
+input_label = tk.Label(input_frame, text="Inputs")
+input_label.grid(row=0)
 
 # run the mainloop to initialize the GUI
 tk.mainloop()
