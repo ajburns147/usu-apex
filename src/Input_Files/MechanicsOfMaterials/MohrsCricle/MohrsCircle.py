@@ -227,7 +227,6 @@ class mohrsCircle(TopicFactory):
             "tauAll": [tauAll, "", "length", "", ""],
             "thetaP": [thetaP, "", "length", "", ""],
             "thetaS": [thetaS, "", "length", "", ""],
-
                       }
 
         # Add the x and y axes to each plot
@@ -256,3 +255,4 @@ class mohrsCircle(TopicFactory):
 
         plt.grid(linestyle='--', color='grey', linewidth=0.5)
         plt.show(block='False')
+        return output
