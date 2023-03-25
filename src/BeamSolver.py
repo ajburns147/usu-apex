@@ -2,7 +2,7 @@ import sympy
 import numpy as np
 
 import sympy
-variables_passed = [[17, 38*np.cos(45)],[-10, 30, 38*np.cos(45)], [-10, 90, (5*38*np.cos(45))]]
+variables_passed = [[17, -38*np.cos(np.pi/4)],[-10, 30, 38*np.cos(np.pi/4)], [-10, 90, (5*38*np.cos(np.pi/4))]]
 
 x, y, z = sympy.symbols('x y z')
 
