@@ -18,8 +18,8 @@ class Projectile_Distance_in_x(TopicFactory):
              "input": self.input_dict,
              "formula": "xtot == vi * cos(theta) * time",
              "Note": """
-                    This is the total distance travelled by the projectile in the x direction as a function 
-                    of velocity, angle, and time
+                    This is the total distance travelled by the projectile in 
+                    the x direction as a function of velocity, angle, and time
                     """,
              "solve_method": "",
              "plot_method": False,
