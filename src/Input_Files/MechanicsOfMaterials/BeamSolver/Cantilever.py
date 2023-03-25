@@ -72,6 +72,11 @@ class Cantilever(TopicFactory):
 
         # Print the solution
         print(sol1)
-        output = sol1
 
-        return output
+        output = {
+            "Ax": [sol1[x], "", "force", "", ""],
+            "Ay": [sol1[y], "", "force", "", ""],
+            "MA": [sol1[m], "", "torque", "", ""],
+        }
+        print(output)
+        return sol1
