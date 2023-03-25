@@ -27,6 +27,7 @@ class Cantilever(TopicFactory):
             return self.info
 
     def Bonus(self, info):
+        print(info)
         return self.selfSolve(info["input"]["Forcex"][0], info["input"]["Forcey"][0], info["input"]["Moment"][0])
 
     def selfSolve(self, Forcex, Forcey, Moment):
@@ -68,3 +69,5 @@ class Cantilever(TopicFactory):
 
         # Print the solution
         print(sol)
+
+        return sol

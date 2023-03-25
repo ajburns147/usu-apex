@@ -25,7 +25,10 @@ def solve(info):
         if safe_float(inputs[i][0], ""):
             output_dict[i][0] = safe_float(inputs[i][0], "")
         else:
-            output_dict[i][0] = sol
+            try:
+                output_dict[i][0] = sol
+            except Exception:
+                pass
 
     info["output"] = output_dict
 
