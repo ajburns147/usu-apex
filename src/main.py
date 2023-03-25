@@ -40,17 +40,16 @@ def topicSelect(event):
     # Import the specified module and get make an object from the class inside
     module = __import__(mod_name, fromlist=['*'])
 
-    class_obj = None
     class_count = 0
     for name, obj in module.__dict__.items():
         if isinstance(obj, type):
             class_count += 1
             if class_count == 2:
-                class_obj = obj
+                global current_object
+                current_object = obj()
                 break
 
-    my_obj = class_obj()
-    info = my_obj.giveInfo()
+    info = current_object.giveInfo()
 
     # Create the info boxes in the GUI
     note = info['Note']
@@ -70,7 +69,18 @@ def topicSelect(event):
 
 
 def execute():
-    pass
+    # Update info with parameters given by the user
+    global current_object
+    input_children = input_frame.winfo_children()
+    info = current_object.giveInfo()
+    itr = 0
+
+    for child in input_children:
+        if isinstance(child, tk.Label):
+            label_txt = child.cget("text")
+            info['input'][label_txt][0] = input_children[itr + 1].get()
+            info['input'][label_txt][3] = input_children[itr + 2].get()
+        itr += 1
 
 
 # Create root
