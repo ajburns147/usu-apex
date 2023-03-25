@@ -153,8 +153,7 @@ def execute():
 # Create root
 root = tk.Tk()
 root.geometry('500x500')
-menubar = tk.Menu(root)
-menubar.add_cascade(label=tk_default._default._default)
+root.title("Engineering Calculator")
 
 # Initialize frames for organization
 top_frame = tk.Frame(root)
@@ -163,13 +162,13 @@ top_frame.pack(side='top', fill="both", expand=True)
 bottom_frame = tk.Frame(root)
 bottom_frame.pack(side='bottom', fill="both", expand=True)
 
-file_frame = tk.Frame(top_frame, relief='groove', bg='blue')
+file_frame = tk.Frame(top_frame, relief='groove')
 file_frame.pack(side='left', fill="both", expand=True)
 
-note_frame = tk.Frame(top_frame, relief='groove', bg='green')
+note_frame = tk.Frame(top_frame, relief='groove')
 note_frame.pack(side="right", fill="both", expand=True)
 
-input_frame = tk.Frame(bottom_frame, relief='groove', bg='red')
+input_frame = tk.Frame(bottom_frame, relief='groove')
 input_frame.pack(fill="both", expand=True)
 
 # create subject drop down boxes
