@@ -44,7 +44,7 @@ def gaussian_elimination(A, b):
 
 for i in output_dict:
     A=[]
-    
+
 A = np.array([[2, 1, -1, 1],
               [4, -6, 0, -7],
               [4, -2, 2, 8],
