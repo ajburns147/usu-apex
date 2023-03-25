@@ -141,7 +141,7 @@ def execute():
     for i in output_info['output']:
         label = tk.Label(outputwin, text=i)
         entry = tk.Label(outputwin, text=str(output_info['output'][i]))
-        unit = ttk.Label(outputwin, text=output_info['input'][i][3])
+        unit = ttk.Label(outputwin, text=output_info['output'][i][3])
         label.grid(row=itr, column=0)
         entry.grid(row=itr, column=1)
         unit.grid(row=itr, column=2)
@@ -153,6 +153,8 @@ def execute():
 # Create root
 root = tk.Tk()
 root.geometry('500x500')
+menubar = tk.Menu(root)
+
 
 # Initialize frames for organization
 top_frame = tk.Frame(root)
