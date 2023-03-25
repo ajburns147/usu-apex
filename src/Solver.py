@@ -1,44 +1,73 @@
-from sympy import symbols, sympify, lambdify
-
+from sympy import symbols, sympify, Eq
+import sympy as sp
+from math import floor, log10
+from copy import deepcopy
 
 def solve(info):
     inputs = info["input"]
     formula = info["formula"]
     solve_method = info["solve_method"]
-    bonus_method = info["bonus"]
+    bonus_method = info["Bonus"]
 
     if solve_method != "":
         bonus_method(info)
 
-    # Get a list of variable names from the keys of the dictionary
-    var_names = list(inputs.keys())
+    # Define symbols for variables based on the keys of the input_dict
+    symbols_list = symbols(' '.join(input_dict.keys()))
 
-    # Use SymPy's symbols() function to create a list of SymPy symbols from the variable names
-    sym_vars = symbols(var_names)
+    ls, rs = formula.split("==")
 
-    # Create a dictionary that maps each variable name to its corresponding symbol
-    sym_dict = dict(zip(var_names, sym_vars))
+    ls = sympify(ls)
+    rs = sympify(rs)
 
-    # Replace the variables in the original dictionary with their corresponding symbols
-    for var_name, var_list in inputs.items():
-        inputs[var_name] = [sym_dict[var_name][i] for i in range(len(var_list))]
+    eqn = Eq(ls, rs)
 
-    # Print the updated dictionary
-    print(inputs)
+    for i, element in enumerate((inputs)):
+        eqn = eqn.subs(symbols_list[i], safe_float(inputs[element][0], ""))
+
+    sol = sp.solve(eqn)
+
+    for i, element in enumerate(sol):
+        sol[i] = round(float(element), -int(floor(log10(abs(element)))) + 4)
+
+    print(f"{sol=}")
+
+    output_dict = deepcopy(input_dict)
+
+    for i in input_dict:
+        if safe_float(inputs[i][0], ""):
+            output_dict[i] = safe_float(inputs[i][0], "")
+        else:
+            output_dict[i] = sol
+
+    info["output"] = output_dict
+
+    print(info)
 
 
-    # Use SymPy's sympify() function to convert the formula string to a SymPy expression
-    formula_expr = sympify(formula)
+def Bonus(a):
+    pass
 
-    # Define a dictionary that maps each symbol to its corresponding list of values
-    sym_dict = dict(zip(sym_vars, [inputs[var_name] for var_name in var_names]))
+input_dict = {"a": ["3.234567", "", ""],
+              "b": ["4", "", ""],
+              "c": ["", "", ""],
+              }
 
-    # Use SymPy's lambdify() function to create a function that can evaluate the formula for any set of variable values
-    eval_formula = lambdify(sym_vars, formula_expr)
+info = {
+    "input": input_dict,
+    "formula": "a**2 + b**2 == c**2",
+    "Note": "This is Pythagoras's theorem",
+    "solve_method": "",
+    "plot_method": False,
+    "Bonus": Bonus
+}
 
-    # Evaluate the formula for the values in the first row of the variable lists
-    result = eval_formula(*[sym_dict[sym][0] for sym in sym_vars])
+def safe_float(value, special_type):
+    try:
+        result = float(value)
+    except (ValueError, TypeError):
+        result = None
+    return result
 
-    # Add the results to "output"
 
-def custom_solve():
+solve(info)
