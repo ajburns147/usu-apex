@@ -20,15 +20,15 @@ def solve(info):
         sol = solveEquation(formula, inputs)
         list_to_5_sig_figs(sol)
     else:
-        info["extra"] = extra
+        info["output"] = extra
 
     # print(f"{sol=}")
 
     for i in inputs:
         if safe_float(inputs[i][0], ""):
-            output_dict[i] = safe_float(inputs[i][0], "")
+            output_dict[i][0] = safe_float(inputs[i][0], "")
         else:
-            output_dict[i] = sol
+            output_dict[i][0] = sol
 
     if "output" not in info:
         info["output"] = output_dict
@@ -72,7 +72,7 @@ def unitConvert(inputs):
 
 def solveEquation(formula, inputs):
     # Define symbols for variables based on the keys of the input_dict
-    symbols_list = symbols(' '.join(input_dict.keys()))
+    symbols_list = symbols(' '.join(inputs.keys()))
 
     ls, rs = formula.split("==")
 
