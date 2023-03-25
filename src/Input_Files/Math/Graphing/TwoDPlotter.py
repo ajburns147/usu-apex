@@ -44,12 +44,22 @@ class ThreeDPlotter(TopicFactory):
         # Evaluate the function for the x values
         y_values = f(x_range)
 
-        # Create the plot
-        plt.plot(x_range, y_values)
+        # Find the max, min, and x-intercept of the function
+        max_y = max(y_values)
+        min_y = min(y_values)
+        x_intercept = x_range[np.where(np.diff(np.sign(y_values)))[0][0]]
 
-        # Set labels for the axes
-        plt.xlabel('X Axis')
-        plt.ylabel('Y Axis')
+        # Create the plot and add the function curve
+        fig, ax = plt.subplots()
+        ax.plot(x_range, y_values)
+        ax.axhline(0, color='black')
+        ax.axvline(0, color='black')
+        # Annotate the max, min, and x-intercept of the function on the plot
+
+        # Set labels for the axes and the title of the plot
+        ax.set_xlabel('X')
+        ax.set_ylabel('Y')
+        ax.set_title(f"Plot of {function_str}")
 
         # Show the plot
         plt.show()
