@@ -4,7 +4,7 @@ import numpy as np
 class Orbital_Period(TopicFactory):
     def __init__(self):
 
-        G = 6.6743 * np.power(10, -11)
+        G = 6.6743 * np.power(10.0, -11)
 
         self.input_dict = {
             "orbitalradius": ["", 3, "length", "", ""],
@@ -16,9 +16,8 @@ class Orbital_Period(TopicFactory):
         self.info = {
              "input": self.input_dict,
              "formula": f"orbitalperiod == np.sqrt((4 * np.pi**2 * np.power(orbitalradius, 3) / {G} * massorbitant)",
-             "Note": """
-                     This is the orbital period of an object around a celestial body as a function of radius and mass
-                     """,
+             "Note": """This is the orbital period of an object around a celestial body as a function of radius and mass
+                        """,
              "solve_method": "",
              "plot_method": False,
              "Bonus": self.Bonus

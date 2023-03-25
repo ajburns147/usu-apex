@@ -132,7 +132,7 @@ def execute():
         itr += 1
 
     outputs = tk.Label(outputwin, text="Output:")
-    outputs.grid(row=itr)
+    outputs.grid(row=itr, column=0)
     itr += 1
     for i in output_info['output']:
         label = tk.Label(outputwin, text=i)
@@ -150,6 +150,7 @@ def execute():
 root = tk.Tk()
 root.geometry('500x500')
 root.title("Engineering Calculator")
+
 
 # Initialize frames for organization
 top_frame = tk.Frame(root)
