@@ -33,7 +33,7 @@ class Cantilever(TopicFactory):
         # Example input list with string numbers
         output_dict = [Forcex, Forcey, Moment]
 
-        variables_passed = []
+        variables_passed = output_dict
 
         for string in output_dict:
             split_string = string.split()
