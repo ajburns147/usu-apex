@@ -1,7 +1,6 @@
 import numpy as np
 
 
-
 def gaussian_elimination(A, b):
     """
     Solves a system of linear equations using Gaussian elimination.
@@ -42,13 +41,20 @@ def gaussian_elimination(A, b):
 
     return x
 
-for i in output_dict:
-    A=[]
+A = []
 
-A = np.array([[2, 1, -1, 1],
-              [4, -6, 0, -7],
-              [4, -2, 2, 8],
-              [1, 1, 1, 1]])
+for i in output_dict:
+    row = []
+    for j in list1:
+        row.append(j)
+    A.append(row)
+
+
+
+#A = np.array([[2, 1, -1, 1],
+ #             [4, -6, 0, -7],
+  #            [4, -2, 2, 8],
+   #           [1, 1, 1, 1]])
 
 for i in output_dict:
     b=[]
