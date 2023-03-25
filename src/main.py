@@ -65,6 +65,7 @@ def topicSelect(event):
     note_text.insert("1.0", "Note:\n"+note)
 
     # Get the units
+    itr=0
     for i, element in enumerate(info['input']):
         # print(f"Units.{inputs[element][2]}")
         module = __import__(f"Units.{info['input'][element][2]}", fromlist=['*'])
@@ -81,18 +82,11 @@ def topicSelect(event):
         my_obj = class_obj()
         unit_dict = my_obj.giveDict()
 
-    default_unit = ""
-    for i in unit_dict:
-        if unit_dict[i] == 1:
-            default_unit = i
-
-    itr = 0
-    for i in info['input']:
-        label = tk.Label(input_frame, text=i)
+        label = tk.Label(input_frame, text=element)
         entry = tk.Entry(input_frame)
-        entry.insert(0, info['input'][i][1])
+        entry.insert(0, info['input'][element][1])
         unit = ttk.Combobox(input_frame, values=list(unit_dict.keys()))
-        unit.set(default_unit)
+        unit.set(list(unit_dict.keys())[0])
         label.grid(row=itr, column=0)
         entry.grid(row=itr, column=1)
         unit.grid(row=itr, column=2)
@@ -115,6 +109,7 @@ def execute():
             info['input'][label_txt][0] = input_children[itr + 1].get()
             info['input'][label_txt][3] = input_children[itr + 2].get()
         itr += 1
+    print(info['input'])
 
     # Call the solver to solve the equation
     output_info = Solver.solve(current_object.giveInfo())
