@@ -1,7 +1,7 @@
 from src.TopicFactory import TopicFactory
 
 
-class Velocity_in_y(TopicFactory):
+class Distnace_in_y(TopicFactory):
     def __init__(self):
 
         g = 9.81
