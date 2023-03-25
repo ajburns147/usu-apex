@@ -7,11 +7,11 @@ class Angular_Position(TopicFactory):
         g = 9.81
 
         self.input_dict = {
-            "radialposition": ["", 3, "radians", "", ""],
+            "radialposition": ["", 3, "angle", "", ""],
             "omegai": ["", 4, "velocity", "", ""],
             "time": ["", 5, "time", "", ""],
             "omegadot" : ["", 3, "acceleration", "", ""],
-            "radialpositioni": ["", 2, "radians", "", ""]
+            "radialpositioni": ["", 2, "angle", "", ""]
                       }
 
         self.info = {
