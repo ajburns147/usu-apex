@@ -15,7 +15,7 @@ class pythagorean_theorem(TopicFactory):
              "Note": "This is Pythagoras's theorem",
              "solve_method": "",
              "plot_method": False,
-             "Bonus": self.Bonus("")
+             "Bonus": self.Bonus
              }
 
     def giveInfo(self):

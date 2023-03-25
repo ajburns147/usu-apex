@@ -16,7 +16,7 @@ class Law_of_Cosines(TopicFactory):
              "Note": "This is the law of cosines",
              "solve_method": "",
              "plot_method": False,
-             "Bonus": self.Bonus("")
+             "Bonus": self.Bonus
              }
 
     def giveInfo(self):
