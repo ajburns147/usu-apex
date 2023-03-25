@@ -1,4 +1,4 @@
-from src.TopicFactory import TopicFactory
+from TopicFactory import TopicFactory
 
 
 class pythagorean_theorem(TopicFactory):
