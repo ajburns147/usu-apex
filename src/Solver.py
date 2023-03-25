@@ -22,8 +22,32 @@ def solve(info):
 
     eqn = Eq(ls, rs)
 
-    for i, element in enumerate((inputs)):
-        eqn = eqn.subs(symbols_list[i], safe_float(inputs[element][0], ""))
+
+    for i, element in enumerate(inputs):
+        # print(f"Units.{inputs[element][2]}")
+        module = __import__(f"Units.{inputs[element][2]}", fromlist=['*'])
+
+        class_obj = None
+        class_count = 0
+        for name, obj in module.__dict__.items():
+            if isinstance(obj, type):
+                class_count += 1
+                if class_count == 2:
+                    class_obj = obj
+                    break
+
+        my_obj = class_obj()
+
+        unit_dict = my_obj.giveDict()
+
+        print(f"{unit_dict[inputs[element][3]]=}")
+        print(f"{inputs[element]=}")
+
+        if not safe_float(inputs[element][0], "") is None:
+            inputs[element][0] = unit_dict[inputs[element][3]] * safe_float(inputs[element][0], "")
+
+    for i, element in enumerate(inputs):
+        eqn = eqn.subs(symbols_list[i], inputs[element][0])
 
     sol = sp.solve(eqn)
 
@@ -48,26 +72,28 @@ def solve(info):
 def Bonus(a):
     pass
 
-input_dict = {"a": ["3.234567", "", ""],
-              "b": ["4", "", ""],
-              "c": ["", "", ""],
-              }
+input_dict = {
+            "a": ["3", 3, "length", "km", ""],
+            "b": ["4", 4, "length", "m", ""],
+            "c": ["", 5, "length", "m", ""],
+            }
 
 info = {
-    "input": input_dict,
-    "formula": "a**2 + b**2 == c**2",
-    "Note": "This is Pythagoras's theorem",
-    "solve_method": "",
-    "plot_method": False,
-    "Bonus": Bonus
+     "input": input_dict,
+     "formula": "a**2 + b**2 == c**2",
+     "Note": "This is Pythagoras's theorem",
+     "solve_method": "",
+     "plot_method": False,
+     "Bonus": Bonus("")
 }
 
 def safe_float(value, special_type):
     try:
         result = float(value)
+        return result
     except (ValueError, TypeError):
         result = None
-    return result
+
 
 
 solve(info)
