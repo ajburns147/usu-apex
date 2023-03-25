@@ -23,23 +23,29 @@ def subSelect(event):
 
 
 def topicSelect(event):
+    # Build the file path
     course_txt = course_box.get()
     sub_txt = sub_box.get()
     topic_txt = topic_box.get()
-
     mod_name = f"Input_Files.{course_txt}.{sub_txt}.{topic_txt[:-3]}"
-    myobj = __import__(mod_name)
+
+    # Import the specified module and get make an object from the class inside
+    module = __import__(mod_name, fromlist=['*'])
 
     class_obj = None
-    for name, obj in myobj.__dict__.items():
+    class_count = 0
+    for name, obj in module.__dict__.items():
         if isinstance(obj, type):
-            class_obj = getattr(myobj, name)
-            break
+            class_count += 1
+            if class_count == 2:
+                class_obj = obj
+                break
 
-    # Instantiate the class
-    obj = class_obj()
-    obj.some_method()
+    my_obj = class_obj()
+    info = my_obj.getInfo()
 
+    # Create the info boxes in the GUI
+    
 
 
 # Create root
