@@ -4,9 +4,9 @@ from src.TopicFactory import TopicFactory
 class pythagorean_theorem(TopicFactory):
     def __init__(self):
         self.input_dict = {
-            "a": ["", "", 3],
-            "b": ["", "", 4],
-            "c": ["", "", 5],
+            "a": ["", 3, "length", "", ""],
+            "b": ["", 4, "length", "", ""],
+            "c": ["", 5, "length", "", ""],
                       }
 
         self.info = {
