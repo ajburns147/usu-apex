@@ -1,5 +1,6 @@
 from TopicFactory import TopicFactory
 
+
 class ThreeDPlotter(TopicFactory):
     def __init__(self):
 
@@ -21,6 +22,7 @@ class ThreeDPlotter(TopicFactory):
 
     def Bonus(self, info):
         return self.selfPlot(info["input"]["function"][0])
+
     def selfPlot(self, function):
         import numpy as np
         import matplotlib.pyplot as plt
