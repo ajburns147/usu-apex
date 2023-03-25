@@ -69,6 +69,7 @@ def solve(info):
     print(info)
 
 
+
 def Bonus(a):
     pass
 
