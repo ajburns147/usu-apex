@@ -14,7 +14,7 @@ class Cantilever(TopicFactory):
             "formula": "",
             "Note": """
                     This is a cantilerver beam solver. Input all of the x force 
-                    components into the text box separated by a space. All moments 
+                    components into the text box separated by a space. All moments
                     are taken around the reaction force location at the wall.
                     Input the moment components into the text box in the same way 
                     as the forces. Force magnitudes multiplied by their respective 
@@ -37,8 +37,11 @@ class Cantilever(TopicFactory):
         output_dict = [Forcex, Forcey, Moment]
 
         variables_passed = []
+        for i in range(len(output_dict)):
+            output_dict[i] = [str(sub_lst) for sub_lst in output_dict[i]]
 
         for string in output_dict:
+
             split_string = string.split()
             new_sublist = []
             for substring in split_string:
