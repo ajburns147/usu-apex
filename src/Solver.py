@@ -5,7 +5,6 @@ from copy import deepcopy
 
 
 def solve(info):
-    #print(info)
     inputs = info["input"]
     formula = info["formula"]
     solve_method = info["solve_method"]
@@ -21,17 +20,15 @@ def solve(info):
     else:
         info["output"] = extra
 
-    # print(f"{sol=}")
 
     for i in inputs:
         if safe_float(inputs[i][0], ""):
             output_dict[i][0] = safe_float(inputs[i][0], "")
         else:
             output_dict[i][0] = sol
-            
+
     info["output"] = output_dict
 
-    print(info)
     return info
 
 
