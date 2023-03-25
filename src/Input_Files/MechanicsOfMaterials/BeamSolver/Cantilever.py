@@ -78,5 +78,5 @@ class Cantilever(TopicFactory):
             "Ay": [sol1[y], "", "force", "", ""],
             "MA": [sol1[m], "", "torque", "", ""],
         }
-        print(output)
+
         return output
