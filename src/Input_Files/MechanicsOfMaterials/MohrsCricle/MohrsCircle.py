@@ -1,35 +1,34 @@
 import math
 import matplotlib.pyplot as plt
-from src.TopicFactory import TopicFactory
+from TopicFactory import TopicFactory
 
 # Define the input stresses
-sigma_x =40
-sigma_y = -30
-tau_xy = 20
+
 
 
 class mohrsCircle(TopicFactory):
     def __init__(self):
         self.input_dict = {
-            "sigmaX": ["", "", "stress", "", ""],
-            "sigmaY": ["", "", "stress", "", ""],
-            "tauXY": ["", "", "shear", "", ""],
+            "sigmaX": ["", "", "length", "", ""],
+            "sigmaY": ["", "", "length", "", ""],
+            "tauXY": ["", "", "length", "", ""],
                       }
 
         self.info = {
              "input": self.input_dict,
-             "formula": "",
+             "formula": "sigmaX**2 + sigmaY**2 == tauXY**2",
              "Note": "This is Mohr's Circle",
              "solve_method": "",
              "plot_method": False,
-             "Bonus": self.Bonus(self.selfSolve(self.input_dict["sigmaX"], self.input_dict["sigmaY"], self.input_dict["tauXY"]))
+             "Bonus": self.Bonus
              }
 
     def giveInfo(self):
         return self.info
 
-
-    def selfSolve(self, sigmaX, sigmaY, tauXY):
+    def Bonus(self, info):
+        return self.selfSolve(info["sigmaX"],info["sigmaY"],info["tauXY"])
+    def selfSolve(self, sigma_x, sigma_y, tau_xy):
         Center = (sigma_x + sigma_y)/2
         Radius = math.sqrt(((sigma_x-sigma_y)/2)**2 + tau_xy**2)
         calc1 = Center+Radius
