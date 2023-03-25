@@ -19,4 +19,8 @@ class Pyhagoreantheorem(TopicFactory):
 
 
     def giveInfo(self):
-        return self.inf
+        return self.info
+
+
+
+
