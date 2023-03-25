@@ -1,11 +1,12 @@
 from TopicFactory import TopicFactory
 
+
 class ThreeDPlotter(TopicFactory):
     def __init__(self):
 
         self.input_dict = {
             "function": ["", "sin(x) + cos(x)", "length", "", ""],
-            "x max": ["", "10", "", ""],
+            "x max": ["", "10", "length", ""],
             "x min": ["", "0", "length", "", ""],
         }
 

@@ -5,7 +5,8 @@ class force(UnitFactory):
         self.unit_dict = {
             "kN": 1,
             "MN": 1000,
-            "lbf": 224.8089431,
+            "N": .001,
+            "lb": 224.8089431,
             "kip": .2248089431,
         }
 
