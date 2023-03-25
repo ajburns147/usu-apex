@@ -1,4 +1,4 @@
-from src import TopicFactory
+from src.TopicFactory import TopicFactory
 
 class Pyhagoreantheorem(TopicFactory):
     def __init__(self):
@@ -13,10 +13,10 @@ class Pyhagoreantheorem(TopicFactory):
              "Note": "This is Pythagoras's theorem",
              "solve_method": "",
              "plot_method": False,
-             "Bonus" : "Bonus"
+             "Bonus" : self.Bonus("")
              }
 
 
 
     def giveInfo(self):
-        return self.inf
+        return self.info
