@@ -11,7 +11,7 @@ class Angular_Acceleration(TopicFactory):
             "omegai": ["", 4, "velocity", "", ""],
             "time": ["", 5, "time", "", ""],
             "omegadot" : ["", 3, "acceleration", "", ""],
-            "radialpositioni": ["", 2, "angle", "", ""]
+            "radialpositioni": ["", 2, "angle", "", ""],
             "omegadoti" : ["", 3, "acceleration", "", ""]
                       }
 
