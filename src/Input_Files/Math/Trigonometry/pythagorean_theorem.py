@@ -1,5 +1,6 @@
 from src.TopicFactory import TopicFactory
 
+
 class pythagorean_theorem(TopicFactory):
     def __init__(self):
         self.input_dict = {
