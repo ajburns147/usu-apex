@@ -11,9 +11,9 @@ tau_xy = 20
 class mohrsCircle(TopicFactory):
     def __init__(self):
         self.input_dict = {
-            "sigmaX": ["", "", 3],
-            "sigmaY": ["", "", 4],
-            "tauXY": ["", "", 5],
+            "sigmaX": ["", "", "stress", "", ""],
+            "sigmaY": ["", "", "stress", "", ""],
+            "tauXY": ["", "", "shear", "", ""],
                       }
 
         self.info = {
@@ -22,7 +22,7 @@ class mohrsCircle(TopicFactory):
              "Note": "This is Mohr's Circle",
              "solve_method": "",
              "plot_method": False,
-             "Bonus": self.Bonus("")
+             "Bonus": self.Bonus(self.selfSolve(self.input_dict["sigmaX"], self.input_dict["sigmaY"], self.input_dict["tauXY"]))
              }
 
     def giveInfo(self):
