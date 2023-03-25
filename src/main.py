@@ -109,14 +109,14 @@ def execute():
             info['input'][label_txt][0] = input_children[itr + 1].get()
             info['input'][label_txt][3] = input_children[itr + 2].get()
         itr += 1
-    print(info['input'])
 
     # Call the solver to solve the equation
-    output_info = Solver.solve(current_object.giveInfo())
+    output_info = Solver.solve(info)
+    #print(output_info)
 
     # Populate the output
     outputwin = tk.Tk()
-    outputwin.geometry("350x350")
+    outputwin.geometry("500x500")
     formula = tk.Label(outputwin, text=output_info['formula'])
     formula.grid(row=0)
     inputs = tk.Label(outputwin, text="Input from user:")

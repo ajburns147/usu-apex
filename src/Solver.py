@@ -5,15 +5,14 @@ from copy import deepcopy
 
 
 def solve(info):
+    #print(info)
     inputs = info["input"]
     formula = info["formula"]
     solve_method = info["solve_method"]
     bonus_method = info["Bonus"]
 
     unitConvert(inputs)
-
     output_dict = deepcopy(inputs)
-
     extra = bonus_method(info)
 
     if formula != "":
@@ -29,11 +28,11 @@ def solve(info):
             output_dict[i][0] = safe_float(inputs[i][0], "")
         else:
             output_dict[i][0] = sol
-
+    print(output_dict)
     if "output" not in info:
         info["output"] = output_dict
 
-    print(info)
+    #print(info)
     return info
 
 
@@ -63,8 +62,8 @@ def unitConvert(inputs):
 
         unit_dict = my_obj.giveDict()
 
-        print(f"{unit_dict[inputs[element][3]]=}")
-        print(f"{inputs[element]=}")
+        # print(f"{unit_dict[inputs[element][3]]=}")
+        # print(f"{inputs[element]=}")
 
         if not safe_float(inputs[element][0], "") is None:
             inputs[element][0] = unit_dict[inputs[element][3]] * safe_float(inputs[element][0], "")
