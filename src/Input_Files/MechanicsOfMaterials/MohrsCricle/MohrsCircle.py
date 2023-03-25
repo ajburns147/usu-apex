@@ -219,6 +219,16 @@ class mohrsCircle(TopicFactory):
         ax1.set_aspect('equal', 'box')
         ax1.set_xlabel('Normal stress (MPa)')
         ax1.set_ylabel('Shear stress (MPa)')
+        output = {
+            "sigma1": [sigma1, "", "length", "", ""],
+            "sigma2": [sigma2, "", "length", "", ""],
+            "sigma3": [sigma3, "", "length", "", ""],
+            "tauIn": [tauIn, "", "length", "", ""],
+            "tauAll": [tauAll, "", "length", "", ""],
+            "thetaP": [thetaP, "", "length", "", ""],
+            "thetaS": [thetaS, "", "length", "", ""],
+
+                      }
 
         # Add the x and y axes to each plot
 
