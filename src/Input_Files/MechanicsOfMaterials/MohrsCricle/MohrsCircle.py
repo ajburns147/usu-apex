@@ -8,7 +8,7 @@ sigma_y = -30
 tau_xy = 20
 
 
-class mohrsCircle():
+class mohrsCircle(TopicFactory):
     def __init__(self):
         self.input_dict = {
             "sigmaX": ["", "", 3],
