@@ -28,11 +28,10 @@ def solve(info):
             output_dict[i][0] = safe_float(inputs[i][0], "")
         else:
             output_dict[i][0] = sol
-    print(output_dict)
-    if "output" not in info:
-        info["output"] = output_dict
+            
+    info["output"] = output_dict
 
-    #print(info)
+    print(info)
     return info
 
 
