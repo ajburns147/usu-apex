@@ -1,6 +1,6 @@
 import numpy as np
 import sympy
-from src import TopicFactory
+from TopicFactory import TopicFactory
 class Cantilever(TopicFactory):
     def __init__(self):
         self.input_dict = {
