@@ -11,7 +11,7 @@ class Initial_Velocity_in_x(TopicFactory):
             "vxi": ["", 3, "velocity", "", ""],
             "vi": ["", 4, "velocity", "", ""],
             "time": ["", 5, "time", "", ""],
-            "theta": ["", 3, "degrees", "", ""],
+            "theta": ["", 3, "angle", "", ""],
                       }
 
         self.info = {

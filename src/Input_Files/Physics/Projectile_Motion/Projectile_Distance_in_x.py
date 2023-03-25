@@ -11,7 +11,7 @@ class Projectile_Distance_in_x(TopicFactory):
             "xtot": ["", 3, "length", "", ""],
             "vi": ["", 4, "velocity", "", ""],
             "time": ["", 5, "time", "", ""],
-            "theta": ["", 3, "degrees", "", ""],
+            "theta": ["", 3, "angle", "", ""],
                       }
 
         self.info = {
