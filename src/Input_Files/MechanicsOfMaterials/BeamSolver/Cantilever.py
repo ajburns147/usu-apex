@@ -65,9 +65,9 @@ class Cantilever(TopicFactory):
         eq3 = sympy.Eq(sum(variables_passed[2]), 0)
 
         # Solve the system of equations
-        sol = sympy.solve((eq1, eq2, eq3), (x, y, m))
+        sol1 = sympy.solve((eq1, eq2, eq3), (x, y, m))
 
         # Print the solution
-        print(sol)
+        print(sol1)
 
-        return sol
+        return sol1
