@@ -57,12 +57,35 @@ def topicSelect(event):
     # Create the info boxes in the GUI
     note = info['Note']
     note_label.config(text="Note:\n"+note)
+
+    # Get the units
+    for i, element in enumerate(info['input']):
+        # print(f"Units.{inputs[element][2]}")
+        module = __import__(f"Units.{info['input'][element][2]}", fromlist=['*'])
+
+        class_obj = None
+        class_count = 0
+        for name, obj in module.__dict__.items():
+            if isinstance(obj, type):
+                class_count += 1
+                if class_count == 2:
+                    class_obj = obj
+                    break
+
+        my_obj = class_obj()
+        unit_dict = my_obj.giveDict()
+
+    default_unit = ""
+    for i in unit_dict:
+        if unit_dict[i] == 1:
+            default_unit = i
+
     itr = 0
     for i in info['input']:
         label = tk.Label(input_frame, text=i)
         entry = tk.Entry(input_frame)
-        unit = ttk.Combobox(input_frame, values=["mm", "m"])
-        unit.set("mm")
+        unit = ttk.Combobox(input_frame, values=list(unit_dict.keys()))
+        unit.set(default_unit)
         label.grid(row=itr, column=0)
         entry.grid(row=itr, column=1)
         unit.grid(row=itr, column=2)
@@ -91,6 +114,7 @@ def execute():
 
     # Populate the output
     outputwin = tk.Tk()
+    outputwin.geometry = "300x300"
     formula = tk.Label(outputwin, text=output_info['formula'])
     formula.grid(row=0)
     inputs = tk.Label(outputwin, text="Input from user:")
@@ -98,22 +122,21 @@ def execute():
 
     itr = 2
     for i in info['input']:
-        label = tk.Label(input_frame, text=i)
-        entry = tk.Label(input_frame, text=str(output_info['input'][i]))
-        unit = tk.Label(input_frame, text=output_info['input'][3])
+        label = tk.Label(outputwin, text=i)
+        entry = tk.Label(outputwin, text=str(output_info['input'][i][0]))
+        unit = tk.Label(outputwin, text=output_info['input'][i][3])
         label.grid(row=itr, column=0)
         entry.grid(row=itr, column=1)
         unit.grid(row=itr, column=2)
         itr += 1
 
     outputs = tk.Label(outputwin, text="Output:")
-    outputs.grid(rowspan=itr)
+    outputs.grid(row=itr)
     itr += 1
     for i in output_info['output']:
         label = tk.Label(outputwin, text=i)
-        entry = tk.Entry(outputwin)
-        unit = ttk.Combobox(outputwin, values=["mm", "m"])
-        unit.set("mm")
+        entry = tk.Label(outputwin, text=str(output_info['output'][i]))
+        unit = ttk.Label(outputwin, text=output_info['input'][i][3])
         label.grid(row=itr, column=0)
         entry.grid(row=itr, column=1)
         unit.grid(row=itr, column=2)
