@@ -195,7 +195,7 @@ note_text = tk.Text(note_frame)
 note_text.insert(tk.END, "Note:\n")
 note_text.grid(row=0)
 
-input_label = tk.Label(input_frame, text="Inputs")
+input_label = tk.Label(input_frame, text="Inputs:")
 input_label.grid(row=0)
 
 execute = tk.Button(bottom_frame, text="Execute", command=execute, state="disabled")
