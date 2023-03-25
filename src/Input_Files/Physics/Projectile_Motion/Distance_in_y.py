@@ -10,12 +10,12 @@ class Velocity_in_y(TopicFactory):
             "y": ["", 3, "length", "", ""],
             "yi": ["", 4, "length", "", ""],
             "time": ["", 5, "time", "", ""],
-            "Vyi" : ["", 3, "velocity", "", ""],
+            "vyi" : ["", 3, "velocity", "", ""],
                       }
 
         self.info = {
              "input": self.input_dict,
-             "formula": f"y == yi + Vyi * time - .5 * {g} * time**2",
+             "formula": f"y == yi + vyi * time - .5 * {g} * time**2",
              "Note": "This is the velocity of the projectile at any time",
              "solve_method": "",
              "plot_method": False,
