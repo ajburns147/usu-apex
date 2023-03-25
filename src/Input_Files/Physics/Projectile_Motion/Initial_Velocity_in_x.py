@@ -23,7 +23,7 @@ class Initial_Velocity_in_x(TopicFactory):
                     """,
              "solve_method": "",
              "plot_method": False,
-             "Bonus": self.Bonus("")
+             "Bonus": self.Bonus
              }
 
     def giveInfo(self):

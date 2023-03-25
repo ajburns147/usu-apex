@@ -22,7 +22,7 @@ class Angular_Velocity(TopicFactory):
                      """,
              "solve_method": "",
              "plot_method": False,
-             "Bonus": self.Bonus("")
+             "Bonus": self.Bonus
              }
 
     def giveInfo(self):

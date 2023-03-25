@@ -19,7 +19,7 @@ class Distnace_in_y(TopicFactory):
              "Note": "This is the velocity of the projectile at any time",
              "solve_method": "",
              "plot_method": False,
-             "Bonus": self.Bonus("")
+             "Bonus": self.Bonus
              }
 
     def giveInfo(self):

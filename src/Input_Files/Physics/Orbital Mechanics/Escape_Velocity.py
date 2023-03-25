@@ -1,22 +1,21 @@
 from src.TopicFactory import TopicFactory
+import numpy as np
 
-
-class Angular_Position(TopicFactory):
+class Escape_Velocity(TopicFactory):
     def __init__(self):
 
-        g = 9.81
+        G = 6.6743 * np.power(10, -11)
 
         self.input_dict = {
-            "radialposition": ["", 3, "angle", "", ""],
-            "omegai": ["", 4, "velocity", "", ""],
+            "vesc": ["", 3, "velocity", "", ""],
+            "massorbitant": ["", 4, "mass", "", ""],
             "time": ["", 5, "time", "", ""],
-            "omegadot" : ["", 3, "acceleration", "", ""],
-            "radialpositioni": ["", 2, "angle", "", ""]
+            "radius": ["", 3, "length", "", ""],
                       }
 
         self.info = {
              "input": self.input_dict,
-             "formula": f"radialposition == radialpositioni +  omegai * time + .5 * omegadot * time ** 2",
+             "formula": f"vesc == np.sqrt((2 * {G} * massorbitant) / radius)",
              "Note": """
                      This is the angular position as a function of initial position, angular velocity, 
                      and angular acceleration.
