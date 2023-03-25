@@ -7,6 +7,8 @@ class length(UnitFactory):
             "km": 1000,
             "mm": .001,
             "ft": 0.3048,
+            "in": 0.0254,
+            "yard": 0.9144,
         }
 
     def giveDict(self):
