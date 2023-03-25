@@ -18,7 +18,7 @@ class Cantilever(TopicFactory):
                     are taken around the reaction force location at the wall.
                     Input the moment components into the text box in the same way 
                     as the forces. Force magnitudes multiplied by their respective 
-                    trig function are acceptable inputs.
+                    trig function are acceptable inputs. Angle input in radians.
                     """,
             "solve_method": "beam",
             "plot_method": False,
