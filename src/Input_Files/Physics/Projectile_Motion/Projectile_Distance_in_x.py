@@ -5,7 +5,7 @@ from math import cos
 class Projectile_Distance_in_x(TopicFactory):
     def __init__(self):
 
-        g = 9.81
+        
 
         self.input_dict = {
             "xtot": ["", 3, "length", "", ""],
