@@ -20,7 +20,7 @@ class Cantilever(TopicFactory):
                     as the forces. Force magnitudes multiplied by their respective 
                     trig function are acceptable inputs.
                     """,
-            "solve_method": "",
+            "solve_method": "beam",
             "plot_method": False,
             "Bonus": self.Bonus
         }
@@ -37,8 +37,6 @@ class Cantilever(TopicFactory):
         output_dict = [Forcex, Forcey, Moment]
 
         variables_passed = []
-        for i in range(len(output_dict)):
-            output_dict[i] = [str(sub_lst) for sub_lst in output_dict[i]]
 
         for string in output_dict:
 
