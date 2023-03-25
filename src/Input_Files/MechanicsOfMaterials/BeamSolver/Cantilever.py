@@ -79,4 +79,4 @@ class Cantilever(TopicFactory):
             "MA": [sol1[m], "", "torque", "", ""],
         }
         print(output)
-        return sol1
+        return output
