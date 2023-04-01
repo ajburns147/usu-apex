@@ -177,7 +177,7 @@ topic_box = ttk.Combobox(file_frame)
 topic_box.set("Topic")
 
 # Populate the course drop down
-course_files = os.listdir("Input_Files")
+course_files = os.listdir(os.path.abspath("Input_Files"))
 course_box['values'] = course_files
 
 # Bind callback functions for the drop-downs
@@ -203,3 +203,7 @@ execute.pack(side="bottom")
 
 # run the mainloop to initialize the GUI
 tk.mainloop()
+
+
+def change_dir():
+    os.chdir('src/usu-apex')
