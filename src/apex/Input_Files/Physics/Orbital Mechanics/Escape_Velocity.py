@@ -1,4 +1,4 @@
-from src.apex.Helper.TopicFactory import TopicFactory
+from apex.Helper.TopicFactory import TopicFactory
 import numpy as np
 
 class Escape_Velocity(TopicFactory):

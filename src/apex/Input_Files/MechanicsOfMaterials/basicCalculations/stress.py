@@ -1,6 +1,6 @@
 from src import apex
 
-from src.apex.Helper.TopicFactory import TopicFactory
+from apex.Helper.TopicFactory import TopicFactory
 
 
 class stress(TopicFactory):

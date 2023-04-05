@@ -1,6 +1,6 @@
 import numpy as np
 import sympy
-from src.apex.Helper.TopicFactory import TopicFactory
+from apex.Helper.TopicFactory import TopicFactory
 class Cantilever(TopicFactory):
     def __init__(self):
         self.input_dict = {

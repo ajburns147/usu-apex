@@ -1,4 +1,4 @@
-from src.apex.Helper.TopicFactory import TopicFactory
+from apex.Helper.TopicFactory import TopicFactory
 
 
 class Velocity_in_y(TopicFactory):

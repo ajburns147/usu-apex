@@ -1,6 +1,6 @@
 import math
 import matplotlib.pyplot as plt
-from src.apex.Helper.TopicFactory import TopicFactory
+from apex.Helper.TopicFactory import TopicFactory
 
 # Define the input stresses
 

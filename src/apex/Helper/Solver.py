@@ -1,3 +1,5 @@
+import importlib
+
 from sympy import symbols, sympify, Eq
 import sympy as sp
 from math import floor, log10
@@ -46,8 +48,8 @@ def safe_float(value, special_type):
 
 def unitConvert(inputs, solve_method):
     for i, element in enumerate(inputs):
-        # print(f"Units.{inputs[element][2]}")
-        module = __import__(f"Units.{inputs[element][2]}", fromlist=['*'])
+        mod_name = f"apex.Units.{inputs[element][2]}"
+        module = importlib.import_module(mod_name)
 
         class_obj = None
         class_count = 0

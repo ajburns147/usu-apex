@@ -1,22 +1,25 @@
 import os
+import importlib
 import tkinter as tk
 from tkinter import ttk
-import sys
 
-print(sys.path)
+from apex.Helper import Solver
 
 curr_file = os.path.dirname(__file__) + "/"
 if curr_file == "/":
     curr_file = ""
 
-from pathlib import Path
-import sys
-path_root = Path(__file__).parents[2]
-sys.path.append(str(path_root))
-print(sys.path)
 
-from src.apex.Helper import Solver
-
+# Custom os.listdir() that excluds __init__.py and __pycache__
+def os_list_dir(path):
+    elements = []
+    with os.scandir(path) as entries:
+        for entry in entries:
+            # check if the entry is a file or directory and is not hidden
+            if entry.is_file() or entry.is_dir():
+                if not entry.name.startswith('__'):
+                    elements.append(entry.name)
+    return elements
 
 # All the callback functions here
 
@@ -29,7 +32,7 @@ def courseSelect(event):
     sub_box.set("Subject")
     topic_box.set("Topic")
     course_txt = course_box.get()
-    file_list = os.listdir(curr_file + f"Input_Files/{course_txt}")
+    file_list = os_list_dir(curr_file + f"Input_Files/{course_txt}")
     sub_box['values'] = file_list
 
 
@@ -38,7 +41,7 @@ def subSelect(event):
     topic_box.set("Topic")
     course_txt = course_box.get()
     sub_txt = sub_box.get()
-    file_list = os.listdir(curr_file + f"Input_Files/{course_txt}/{sub_txt}")
+    file_list = os_list_dir(curr_file + f"Input_Files/{course_txt}/{sub_txt}")
     good_files = []
     for i in file_list:
         if i[-3:] == ".py":
@@ -58,10 +61,10 @@ def topicSelect(event):
     course_txt = course_box.get()
     sub_txt = sub_box.get()
     topic_txt = topic_box.get()
-    mod_name = f"Input_Files.{course_txt}.{sub_txt}.{topic_txt}"
+    mod_name = f"apex.Input_Files.{course_txt}.{sub_txt}.{topic_txt}"
 
     # Import the specified module and get make an object from the class inside
-    module = __import__(mod_name, fromlist=['*'])
+    module = importlib.import_module(mod_name)
 
     class_count = 0
     for name, obj in module.__dict__.items():
@@ -83,7 +86,9 @@ def topicSelect(event):
     itr = 0
     for i, element in enumerate(info['input']):
         # print(f"Units.{inputs[element][2]}")
-        module = __import__(f"Units.{info['input'][element][2]}", fromlist=['*'])
+        # module = __import__(f"apex.Units.{info['input'][element][2]}", fromlist=['*'])
+        mod_name = f"apex.Units.{info['input'][element][2]}"
+        module = importlib.import_module(mod_name)
 
         class_obj = None
         class_count = 0
@@ -191,7 +196,7 @@ topic_box = ttk.Combobox(file_frame)
 topic_box.set("Topic")
 
 # Populate the course drop down
-course_files = os.listdir(curr_file + "Input_Files")
+course_files = os_list_dir(curr_file + "Input_Files")
 course_box['values'] = course_files
 
 # Bind callback functions for the drop-downs

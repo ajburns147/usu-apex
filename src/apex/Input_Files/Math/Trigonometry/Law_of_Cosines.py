@@ -2,7 +2,7 @@
 # import os
 # sys.path.append(os.getcwd()+"/src")
 
-from src.apex.Helper.TopicFactory import TopicFactory
+from apex.Helper.TopicFactory import TopicFactory
 
 
 class Law_of_Cosines(TopicFactory):

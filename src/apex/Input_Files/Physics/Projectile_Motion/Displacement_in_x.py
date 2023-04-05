@@ -1,4 +1,4 @@
-from src.apex.Helper.TopicFactory import TopicFactory
+from apex.Helper.TopicFactory import TopicFactory
 
 
 class Displacement_in_x(TopicFactory):
