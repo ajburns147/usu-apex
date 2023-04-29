@@ -33,7 +33,7 @@ class Torque(TopicFactory):
         return self.info
 
     def Bonus(self, info):
-        return self.selfSolve(info["input"]["FVector"][0], info["input"]["rVector"][0])
+        return self.selfSolve(info["input"]["FVector"]["value"], info["input"]["rVector"]["value"])
 
     def selfSolve(self, forceV, radiusV):
         import numpy as np

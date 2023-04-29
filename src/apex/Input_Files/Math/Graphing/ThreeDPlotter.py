@@ -27,7 +27,7 @@ class ThreeDPlotter(TopicFactory):
         return self.info
 
     def Bonus(self, info):
-        return self.selfPlot(info["input"]["function"][0])
+        return self.selfPlot(info["input"]["function"]["value"])
 
     def selfPlot(self, function):
         import numpy as np

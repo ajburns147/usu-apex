@@ -44,7 +44,7 @@ trig function are acceptable inputs. Angle input in radians.
 
     def Bonus(self, info):
         print(info)
-        return self.selfSolve(info["input"]["Forcex"][0], info["input"]["Forcey"][0], info["input"]["Moment"][0])
+        return self.selfSolve(info["input"]["Forcex"]["value"], info["input"]["Forcey"]["value"], info["input"]["Moment"]["value"])
 
     def selfSolve(self, Forcex, Forcey, Moment):
         # Example input list with string numbers

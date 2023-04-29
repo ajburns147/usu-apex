@@ -38,7 +38,7 @@ class MohrsCircle(TopicFactory):
         return self.info
 
     def Bonus(self, info):
-        return self.selfSolve(info["input"]["sigmaX"][0], info["input"]["sigmaY"][0], info["input"]["tauXY"][0])
+        return self.selfSolve(info["input"]["sigmaX"]["value"], info["input"]["sigmaY"]["value"], info["input"]["tauXY"]["value"])
 
     def selfSolve(self, sigma_x, sigma_y, tau_xy):
         Center = (sigma_x + sigma_y)/2
@@ -220,13 +220,41 @@ class MohrsCircle(TopicFactory):
         ax1.set_xlabel('Normal stress (kPa)')
         ax1.set_ylabel('Shear stress (kPa)')
         output = {
-            "sigma1": [sigma1, "", "length", "", ""],
-            "sigma2": [sigma2, "", "length", "", ""],
-            "sigma3": [sigma3, "", "length", "", ""],
-            "tauIn": [tauIn, "", "length", "", ""],
-            "tauAll": [tauAll, "", "length", "", ""],
-            "thetaP": [thetaP, "", "length", "", ""],
-            "thetaS": [thetaS, "", "length", "", ""],
+            "sigma1": {
+                "value": sigma1,
+                "dimension": "length",
+                "unit": "stress",
+            },
+            "sigma2": {
+                "value": sigma2,
+                "dimension": "length",
+                "unit": "stress",
+            },
+            "sigma3": {
+                "value": sigma3,
+                "dimension": "length",
+                "unit": "stress",
+            },
+            "tauIn": {
+                "value": tauIn,
+                "dimension": "length",
+                "unit": "stress",
+            },
+            "tauAll": {
+                "value": tauAll,
+                "dimension": "length",
+                "unit": "stress",
+            },
+            "thetaP": {
+                "value": thetaP,
+                "dimension": "length",
+                "unit": "degrees",
+            },
+            "thetaS": {
+                "value": thetaS,
+                "dimension": "length",
+                "unit": "degrees",
+            },
                       }
 
         # Add the x and y axes to each plot
