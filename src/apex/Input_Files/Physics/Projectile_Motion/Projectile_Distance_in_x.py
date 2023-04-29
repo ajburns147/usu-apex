@@ -2,6 +2,7 @@ from apex.Helper.TopicFactory import TopicFactory
 
 from math import cos
 
+
 class Projectile_Distance_in_x(TopicFactory):
     def __init__(self):
 

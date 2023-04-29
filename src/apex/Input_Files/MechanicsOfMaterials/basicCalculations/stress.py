@@ -1,9 +1,7 @@
-from src import apex
-
 from apex.Helper.TopicFactory import TopicFactory
 
 
-class stress(TopicFactory):
+class Stress(TopicFactory):
     def __init__(self):
 
         self.input_dict = {

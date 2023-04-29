@@ -2,6 +2,7 @@ from apex.Helper.TopicFactory import TopicFactory
 
 from math import sin
 
+
 class Initial_Velocity_in_y(TopicFactory):
     def __init__(self):
 

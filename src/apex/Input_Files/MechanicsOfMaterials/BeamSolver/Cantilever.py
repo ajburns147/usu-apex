@@ -1,6 +1,8 @@
 import numpy as np
 import sympy
 from apex.Helper.TopicFactory import TopicFactory
+
+
 class Cantilever(TopicFactory):
     def __init__(self):
 
@@ -38,7 +40,7 @@ trig function are acceptable inputs. Angle input in radians.
         }
 
     def giveInfo(self):
-            return self.info
+        return self.info
 
     def Bonus(self, info):
         print(info)
@@ -63,11 +65,9 @@ trig function are acceptable inputs. Angle input in radians.
 
         print(variables_passed)
 
-
-
         x, y, m = sympy.symbols('x y m')
 
-        variables=[x,y,m]
+        variables = [x, y, m]
 
         for i in range(len(variables_passed)):
             variables_passed[i].extend([variables[i]])

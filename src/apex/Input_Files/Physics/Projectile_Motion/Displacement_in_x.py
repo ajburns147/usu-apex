@@ -4,7 +4,6 @@ from apex.Helper.TopicFactory import TopicFactory
 class Displacement_in_x(TopicFactory):
     def __init__(self):
 
-
         self.input_dict = {
             "x": {
                 "default_value": 3,

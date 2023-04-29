@@ -6,7 +6,6 @@ class Angular_Velocity(TopicFactory):
 
         g = 9.81
 
-
         self.input_dict = {
             "omega": {
                 "default_value": 3,

@@ -1,7 +1,7 @@
 from apex.Helper.TopicFactory import TopicFactory
 
 
-class pythagorean_theorem(TopicFactory):
+class Pythagorean_Theorem(TopicFactory):
     def __init__(self):
         self.input_dict = {
             "a": {

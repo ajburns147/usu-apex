@@ -1,6 +1,7 @@
 from apex.Helper.TopicFactory import TopicFactory
 import numpy as np
 
+
 class Orbital_Period(TopicFactory):
     def __init__(self):
 

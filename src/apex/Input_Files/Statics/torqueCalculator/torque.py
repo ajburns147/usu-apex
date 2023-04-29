@@ -1,6 +1,7 @@
 from apex.Helper.TopicFactory import TopicFactory
 
-class torque(TopicFactory):
+
+class Torque(TopicFactory):
     def __init__(self):
         self.input_dict = {
             "F": {
