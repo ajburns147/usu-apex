@@ -3,11 +3,11 @@ from apex.Helper.UnitFactory import UnitFactory
 class torque(UnitFactory):
     def __init__(self):
         self.unit_dict = {
-            "Nm": 1,
-            "ftlb": 0.7376,
-            "inlb": 8.851,
-            "mNm": 1000,
-            "gf cm": 10197,
+            "N*m": 1,
+            "ft*lb": 0.138254954376,
+            "in*lb": 0.011521246198,
+            "mN*m": 0.001,
+            "gf*cm": 9.80665e-05,
         }
 
     def giveDict(self):

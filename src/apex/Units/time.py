@@ -8,10 +8,10 @@ class time(UnitFactory):
             "hour": 60*60,
             "day": 60*60*24,
             "week": 60*60*24*7,
-            "year": 3.154e+7,
-            "ms": 1000,
-            "μs": 10**6,
-            "ns": 10**9,
+            "year": 31557600,
+            "ms": .001,
+            "μs": 10**-6,
+            "ns": 10**-9,
         }
 
     def giveDict(self):

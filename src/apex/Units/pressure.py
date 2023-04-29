@@ -3,12 +3,12 @@ from apex.Helper.UnitFactory import UnitFactory
 class pressure(UnitFactory):
     def __init__(self):
         self.unit_dict = {
-            "kPa": 1,
-            "Pa": 0.001,
-            "psi": 6.89476,
-            "bar": 100,
-            "atm": 101.325,
-            "mmHg": 0.133322,
+            "Pa": 1,
+            "kPa": 1000,
+            "psi": 6894.7572931683635,
+            "bar": 1e5,
+            "atm": 101325,
+            "mmHg": 133.322387415,
         }
 
     def giveDict(self):

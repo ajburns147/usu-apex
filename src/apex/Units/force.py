@@ -3,11 +3,11 @@ from apex.Helper.UnitFactory import UnitFactory
 class force(UnitFactory):
     def __init__(self):
         self.unit_dict = {
-            "kN": 1,
-            "MN": 1000,
-            "N": .001,
-            "lb": 224.8089431,
-            "kip": .2248089431,
+            "N": 1,
+            "kN": 1e3,
+            "MN": 1e6,
+            "lb": .45359237,
+            "kip": 4448.2216152605,
         }
 
     def giveDict(self):

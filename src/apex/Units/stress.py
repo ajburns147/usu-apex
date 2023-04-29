@@ -3,9 +3,9 @@ from apex.Helper.UnitFactory import UnitFactory
 class stress(UnitFactory):
     def __init__(self):
         self.unit_dict = {
-            "kPa": 1,
-            "Pa": 0.001,
-            "psi": 6.89476,
+            "Pa": 1,
+            "kPa": 1000,
+            "psi": 6894.7572931683635,
         }
 
     def giveDict(self):
