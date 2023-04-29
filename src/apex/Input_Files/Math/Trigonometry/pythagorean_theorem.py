@@ -4,10 +4,21 @@ from apex.Helper.TopicFactory import TopicFactory
 class pythagorean_theorem(TopicFactory):
     def __init__(self):
         self.input_dict = {
-            "a": ["", 3, "length", "", ""],
-            "b": ["", 4, "length", "", ""],
-            "c": ["", "", "length", "", ""],
-                      }
+            "a": {
+                "default_value": 3,
+                "dimension": "length",
+            },
+
+            "b": {
+                "default_value": 4,
+                "dimension": "length",
+            },
+
+            "c": {
+                "default_value": None,
+                "dimension": "length",
+            },
+        }
 
         self.info = {
              "input": self.input_dict,

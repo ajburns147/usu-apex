@@ -7,13 +7,36 @@ class Angular_Acceleration(TopicFactory):
         g = 9.81
 
         self.input_dict = {
-            "radialposition": ["", 3, "angle", "", ""],
-            "omegai": ["", 4, "velocity", "", ""],
-            "time": ["", 5, "time", "", ""],
-            "omegadot" : ["", 3, "acceleration", "", ""],
-            "radialpositioni": ["", 2, "angle", "", ""],
-            "omegadoti" : ["", 3, "acceleration", "", ""]
-                      }
+            "radialposition": {
+                "default_value": 3,
+                "dimension": "angle",
+            },
+
+            "omegai": {
+                "default_value": 4,
+                "dimension": "velocity",
+            },
+
+            "time": {
+                "default_value": 5,
+                "dimension": "time",
+            },
+
+            "omegadot": {
+                "default_value": 3,
+                "dimension": "acceleration",
+            },
+
+            "radialpositioni": {
+                "default_value": 2,
+                "dimension": "angle",
+            },
+
+            "omegadoti": {
+                "default_value": 3,
+                "dimension": "acceleration",
+            },
+        }
 
         self.info = {
              "input": self.input_dict,

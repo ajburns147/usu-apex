@@ -5,7 +5,10 @@ class ThreeDPlotter(TopicFactory):
     def __init__(self):
 
         self.input_dict = {
-            "function": ["", "sin(sqrt(x**2 + y**2))", "length", "", ""],
+            "function": {
+                "default_value": "sin(sqrt(x**2 + y**2))",
+                "dimension": "length",
+            },
         }
 
         self.info = {

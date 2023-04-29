@@ -7,11 +7,26 @@ class Escape_Velocity(TopicFactory):
         G = 6.6743 * np.power(10, -11)
 
         self.input_dict = {
-            "vesc": ["", 3, "velocity", "", ""],
-            "massorbitant": ["", 4, "mass", "", ""],
-            "time": ["", 5, "time", "", ""],
-            "radius": ["", 3, "length", "", ""],
-                      }
+            "vesc": {
+                "default_value": 3,
+                "dimension": "velocity",
+            },
+
+            "massorbitant": {
+                "default_value": 4,
+                "dimension": "mass",
+            },
+
+            "time": {
+                "default_value": 5,
+                "dimension": "time",
+            },
+
+            "radius": {
+                "default_value": 3,
+                "dimension": "length",
+            },
+        }
 
         self.info = {
              "input": self.input_dict,

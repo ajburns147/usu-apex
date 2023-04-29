@@ -5,9 +5,20 @@ class ThreeDPlotter(TopicFactory):
     def __init__(self):
 
         self.input_dict = {
-            "function": ["", "sin(x) + cos(x)", "length", "", ""],
-            "x max": ["", "10", "length", ""],
-            "x min": ["", "0", "length", "", ""],
+            "function": {
+                "default_value": "sin(x) + cos(x)",
+                "dimension": "length",
+            },
+
+            "x max": {
+                "default_value": 10,
+                "dimension": "length",
+            },
+
+            "x min": {
+                "default_value": 0,
+                "dimension": "length",
+            },
         }
 
         self.info = {
@@ -24,6 +35,7 @@ class ThreeDPlotter(TopicFactory):
 
     def Bonus(self, info):
         return self.selfPlot(info["input"]["function"][0], info["input"]["x max"][0], info["input"]["x min"][0])
+
     def selfPlot(self, function, xMax, xMin):
         import numpy as np
         import matplotlib.pyplot as plt

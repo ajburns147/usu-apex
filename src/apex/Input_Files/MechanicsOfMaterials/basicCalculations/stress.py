@@ -5,11 +5,23 @@ from apex.Helper.TopicFactory import TopicFactory
 
 class stress(TopicFactory):
     def __init__(self):
+
         self.input_dict = {
-            "F": ["", 3, "length", "", ""],
-            "A": ["", 4, "length", "", ""],
-            "stress": ["", "", "length", "", ""],
-                      }
+            "F": {
+                "default_value": 3,
+                "dimension": "length",
+            },
+
+            "A": {
+                "default_value": 4,
+                "dimension": "length",
+            },
+
+            "stress": {
+                "default_value": None,
+                "dimension": "length",
+            },
+        }
 
         self.info = {
              "input": self.input_dict,

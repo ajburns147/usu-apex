@@ -3,10 +3,21 @@ from apex.Helper.TopicFactory import TopicFactory
 class torque(TopicFactory):
     def __init__(self):
         self.input_dict = {
-            "FVector": ["", [1,2,3], "length", "", ""],
-            "rVector": ["", [2,3,4], "length", "", ""],
-            "Torque": ["", "", "length", "", ""],
-                      }
+            "FVector": {
+                "default_value": [1, 2, 3],
+                "dimension": "length",
+            },
+
+            "rVector": {
+                "default_value": [2, 3, 4],
+                "dimension": "length",
+            },
+
+            "Torque": {
+                "default_value": None,
+                "dimension": "length",
+            },
+        }
 
         self.info = {
              "input": self.input_dict,

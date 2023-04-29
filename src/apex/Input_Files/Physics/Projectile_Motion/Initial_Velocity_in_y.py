@@ -8,11 +8,26 @@ class Initial_Velocity_in_y(TopicFactory):
         g = 9.81
 
         self.input_dict = {
-            "vyi": ["", 3, "velocity", "", ""],
-            "vi": ["", 4, "velocity", "", ""],
-            "time": ["", 5, "time", "", ""],
-            "theta": ["", 3, "angle", "", ""],
-                      }
+            "vyi": {
+                "default_value": 3,
+                "dimension": "velocity",
+            },
+
+            "vi": {
+                "default_value": 4,
+                "dimension": "velocity",
+            },
+
+            "time": {
+                "default_value": 5,
+                "dimension": "time",
+            },
+
+            "theta": {
+                "default_value": 3,
+                "dimension": "angle",
+            },
+        }
 
         self.info = {
              "input": self.input_dict,

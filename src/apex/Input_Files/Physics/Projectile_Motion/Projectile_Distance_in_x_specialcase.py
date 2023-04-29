@@ -8,11 +8,26 @@ class Projectile_Distance_in_x(TopicFactory):
         g = 9.81
 
         self.input_dict = {
-            "xtot": ["", 3, "length", "", ""],
-            "vi": ["", 4, "velocity", "", ""],
-            "time": ["", 5, "time", "", ""],
-            "theta": ["", 3, "angle", "", ""],
-                      }
+            "xtot": {
+                "default_value": 3,
+                "dimension": "length",
+            },
+
+            "vi": {
+                "default_value": 4,
+                "dimension": "velocity",
+            },
+
+            "time": {
+                "default_value": 5,
+                "dimension": "time",
+            },
+
+            "theta": {
+                "default_value": 3,
+                "dimension": "angle",
+            },
+        }
 
         self.info = {
              "input": self.input_dict,

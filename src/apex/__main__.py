@@ -87,7 +87,7 @@ def topicSelect(event):
     for i, element in enumerate(info['input']):
         # print(f"Units.{inputs[element][2]}")
         # module = __import__(f"apex.Units.{info['input'][element][2]}", fromlist=['*'])
-        mod_name = f"apex.Units.{info['input'][element][2]}"
+        mod_name = f"apex.Units.{info['input'][element]['dimension']}"
         module = importlib.import_module(mod_name)
 
         class_obj = None
@@ -104,7 +104,12 @@ def topicSelect(event):
 
         label = tk.Label(input_frame, text=element)
         entry = tk.Entry(input_frame)
-        entry.insert(0, info['input'][element][1])
+
+        if info['input'][element]["default_value"] is None:
+            entry.insert(0, "")
+        else:
+            entry.insert(0, info['input'][element]["default_value"])
+
         unit = ttk.Combobox(input_frame, values=list(unit_dict.keys()))
         unit.set(list(unit_dict.keys())[0])
         label.grid(row=itr, column=0)
@@ -126,8 +131,8 @@ def execute():
     for child in input_children:
         if isinstance(child, tk.Label):
             label_txt = child.cget("text")
-            info['input'][label_txt][0] = input_children[itr + 1].get()
-            info['input'][label_txt][3] = input_children[itr + 2].get()
+            info['input'][label_txt]["value"] = input_children[itr + 1].get()
+            info['input'][label_txt]["unit"] = input_children[itr + 2].get()
         itr += 1
 
     # Call the solver to solve the equation
@@ -144,8 +149,8 @@ def execute():
     itr = 2
     for i in info['input']:
         label = tk.Label(outputwin, text=i)
-        entry = tk.Label(outputwin, text=str(output_info['input'][i][0]))
-        unit = tk.Label(outputwin, text=output_info['input'][i][3])
+        entry = tk.Label(outputwin, text=str(output_info['input'][i]["value"]))
+        unit = tk.Label(outputwin, text=output_info['input'][i]["unit"])
         label.grid(row=itr, column=0)
         entry.grid(row=itr, column=1)
         unit.grid(row=itr, column=2)
@@ -156,8 +161,8 @@ def execute():
     itr += 1
     for i in output_info['output']:
         label = tk.Label(outputwin, text=i)
-        entry = tk.Label(outputwin, text=str(output_info['output'][i][0]))
-        unit = ttk.Label(outputwin, text=output_info['output'][i][3])
+        entry = tk.Label(outputwin, text=str(output_info['output'][i]["value"]))
+        unit = ttk.Label(outputwin, text=output_info['output'][i]["unit"])
         label.grid(row=itr, column=0)
         entry.grid(row=itr, column=1)
         unit.grid(row=itr, column=2)

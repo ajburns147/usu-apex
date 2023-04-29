@@ -6,12 +6,28 @@ class Angular_Velocity(TopicFactory):
 
         g = 9.81
 
+
         self.input_dict = {
-            "omega": ["", 3, "velocity", "", ""],
-            "omegai": ["", 4, "velocity", "", ""],
-            "time": ["", 5, "time", "", ""],
-            "omegadot" : ["", 3, "acceleration", "", ""],
-                      }
+            "omega": {
+                "default_value": 3,
+                "dimension": "velocity",
+            },
+
+            "omegai": {
+                "default_value": 5,
+                "dimension": "velocity",
+            },
+
+            "time": {
+                "default_value": 5,
+                "dimension": "time",
+            },
+
+            "omegadot": {
+                "default_value": 3,
+                "dimension": "acceleration",
+            },
+        }
 
         self.info = {
              "input": self.input_dict,

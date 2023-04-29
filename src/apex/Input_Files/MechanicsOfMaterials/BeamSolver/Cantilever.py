@@ -3,10 +3,22 @@ import sympy
 from apex.Helper.TopicFactory import TopicFactory
 class Cantilever(TopicFactory):
     def __init__(self):
+
         self.input_dict = {
-            "Forcex": ["", "75 24*np.cos(.5236)", "force", "", ""],
-            "Forcey": ["", "-42 60 -24*np.sin(.5236)", "force", "", ""],
-            "Moment": ["", "20 -24*np.sin(5236)*3", "torque", "", ""],
+            "Forcex": {
+                "default_value": "75 24*np.cos(.5236)",
+                "dimension": "force",
+            },
+
+            "Forcey": {
+                "default_value": "-42 60 -24*np.sin(.5236)",
+                "dimension": "force",
+            },
+
+            "Moment": {
+                "default_value": "20 -24*np.sin(5236)*3",
+                "dimension": "force",
+            },
         }
 
         self.info = {

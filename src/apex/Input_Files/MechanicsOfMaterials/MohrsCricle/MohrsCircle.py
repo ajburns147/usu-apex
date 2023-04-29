@@ -6,11 +6,25 @@ from apex.Helper.TopicFactory import TopicFactory
 
 class mohrsCircle(TopicFactory):
     def __init__(self):
+
         self.input_dict = {
-            "sigmaX": ["", "40", "stress", "", ""],
-            "sigmaY": ["", "-30", "stress", "", ""],
-            "tauXY": ["", "20", "stress", "", ""],
-                      }
+            "sigmaX": {
+                "default_value": 40,
+                "dimension": "stress",
+            },
+
+            "sigmaY": {
+                "default_value": -30,
+                "dimension": "stress",
+            },
+
+            "tauXY": {
+                "default_value": 20,
+                "dimension": "stress",
+            },
+        }
+
+
 
         self.info = {
              "input": self.input_dict,

@@ -24,11 +24,11 @@ def solve(info):
 
 
     for i in inputs:
-        if safe_float(inputs[i][0], ""):
-            output_dict[i][0] = safe_float(inputs[i][0], "")
+        if safe_float(inputs[i]["value"], ""):
+            output_dict[i]["value"] = safe_float(inputs[i]["value"], "")
         else:
             try:
-                output_dict[i][0] = sol
+                output_dict[i]["value"] = sol
             except Exception:
                 pass
     if formula != "":
@@ -48,7 +48,7 @@ def safe_float(value, special_type):
 
 def unitConvert(inputs, solve_method):
     for i, element in enumerate(inputs):
-        mod_name = f"apex.Units.{inputs[element][2]}"
+        mod_name = f"apex.Units.{inputs[element]['dimension']}"
         module = importlib.import_module(mod_name)
 
         class_obj = None
@@ -64,11 +64,9 @@ def unitConvert(inputs, solve_method):
 
         unit_dict = my_obj.giveDict()
 
-        # print(f"{unit_dict[inputs[element][3]]=}")
-        # print(f"{inputs[element]=}")
 
-        if not safe_float(inputs[element][0], "") is None and not solve_method == "beam":
-            inputs[element][0] = unit_dict[inputs[element][3]] * safe_float(inputs[element][0], "")
+        if not safe_float(inputs[element]["value"], "") is None and not solve_method == "beam":
+            inputs[element]["value"] = unit_dict[inputs[element]["unit"]] * safe_float(inputs[element]["value"], "")
 
 
 def solveEquation(formula, inputs):
@@ -83,7 +81,7 @@ def solveEquation(formula, inputs):
     eqn = Eq(ls, rs)
 
     for i, element in enumerate(inputs):
-        eqn = eqn.subs(symbols_list[i], inputs[element][0])
+        eqn = eqn.subs(symbols_list[i], inputs[element]["value"])
 
     sol = sp.solve(eqn)
 

@@ -7,11 +7,26 @@ class Orbital_Period(TopicFactory):
         G = 6.6743 * np.power(10.0, -11)
 
         self.input_dict = {
-            "orbitalradius": ["", 3, "length", "", ""],
-            "massorbitant": ["", 4, "mass", "", ""],
-            "time": ["", 5, "time", "", ""],
-            "orbitalperiod": ["", 3, "time", "", ""],
-                      }
+            "orbitalradius": {
+                "default_value": 3,
+                "dimension": "length",
+            },
+
+            "massorbitant": {
+                "default_value": 4,
+                "dimension": "mass",
+            },
+
+            "time": {
+                "default_value": 5,
+                "dimension": "time",
+            },
+
+            "orbitalperiod": {
+                "default_value": 3,
+                "dimension": "time",
+            },
+        }
 
         self.info = {
              "input": self.input_dict,

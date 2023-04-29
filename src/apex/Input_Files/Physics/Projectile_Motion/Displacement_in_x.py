@@ -6,11 +6,26 @@ class Displacement_in_x(TopicFactory):
 
 
         self.input_dict = {
-            "x": ["", 3, "length", "", ""],
-            "xi": ["", 4, "length", "", ""],
-            "time": ["", 5, "time", "", ""],
-            "vxi": ["", 2, "velocity", "", ""],
-                      }
+            "x": {
+                "default_value": 3,
+                "dimension": "length",
+            },
+
+            "xi": {
+                "default_value": 4,
+                "dimension": "length",
+            },
+
+            "time": {
+                "default_value": 5,
+                "dimension": "time",
+            },
+
+            "vxi": {
+                "default_value": 2,
+                "dimension": "velocity",
+            },
+        }
 
         self.info = {
              "input": self.input_dict,

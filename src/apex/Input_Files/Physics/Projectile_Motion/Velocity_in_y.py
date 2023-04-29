@@ -7,10 +7,21 @@ class Velocity_in_y(TopicFactory):
         g = 9.81
 
         self.input_dict = {
-            "vy": ["", 3, "velocity", "", ""],
-            "vyi": ["", 4, "velocity", "", ""],
-            "time": ["", 5, "time", "", ""],
-                      }
+            "vy": {
+                "default_value": 3,
+                "dimension": "velocity",
+            },
+
+            "vyi": {
+                "default_value": 4,
+                "dimension": "velocity",
+            },
+
+            "time": {
+                "default_value": 5,
+                "dimension": "time",
+            },
+        }
 
         self.info = {
              "input": self.input_dict,
