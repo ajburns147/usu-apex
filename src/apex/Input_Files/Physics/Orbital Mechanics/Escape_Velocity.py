@@ -5,7 +5,7 @@ import numpy as np
 class Escape_Velocity(TopicFactory):
     def __init__(self):
 
-        G = 6.6743 * np.power(10, -11)
+        G = 6.6743 * 10**-11
 
         self.input_dict = {
             "vesc": {

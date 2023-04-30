@@ -24,7 +24,6 @@ class TestUnitConversion(unittest.TestCase):
         with self.subTest(f"Test conversion factors for {module_name} units"):
             for unit_name, conversion_factor in unit_dict.items():
                 try:
-
                     unit = self.ureg(unit_name)
                     self.assertAlmostEqual(unit.to_base_units().magnitude, conversion_factor, msg=f"\nFile: {module_name}, Unit: {unit_name}")
                 except Exception as e:

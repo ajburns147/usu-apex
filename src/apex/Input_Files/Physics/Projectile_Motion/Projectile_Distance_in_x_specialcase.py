@@ -3,7 +3,7 @@ from apex.Helper.TopicFactory import TopicFactory
 from math import sin
 
 
-class Projectile_Distance_in_x(TopicFactory):
+class Projectile_Distance_in_x_specialcase(TopicFactory):
     def __init__(self):
 
         g = 9.81

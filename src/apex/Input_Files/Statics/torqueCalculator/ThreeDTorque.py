@@ -1,7 +1,7 @@
 from apex.Helper.TopicFactory import TopicFactory
 
 
-class Torque(TopicFactory):
+class ThreeDTorque(TopicFactory):
     def __init__(self):
         self.input_dict = {
             "FVector": {

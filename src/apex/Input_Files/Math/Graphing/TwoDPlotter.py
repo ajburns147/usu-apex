@@ -1,7 +1,7 @@
 from apex.Helper.TopicFactory import TopicFactory
 
 
-class ThreeDPlotter(TopicFactory):
+class TwoDPlotter(TopicFactory):
     def __init__(self):
 
         self.input_dict = {
