@@ -1,6 +1,6 @@
 # README for usu-apex library
 
-The `usu-apex` library is a Python library that provides tools for solving and plotting various types of mathematical functions. This library was created by [Your Name], and it is intended for use by anyone who needs to work with mathematical functions in their Python projects.
+The `usu-apex` library is a Python library that provides tools for solving and plotting various types of mathematical functions. This library is intended for use by anyone who needs to work with engineering or mathematical functions in their homework or Python projects.
 
 ## Website
 Please see the website for a beginner-friendly set of installation and running instructions
