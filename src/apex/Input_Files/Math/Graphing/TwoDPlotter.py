@@ -23,7 +23,7 @@ class TwoDPlotter(TopicFactory):
 
         self.info = {
             "input": self.input_dict,
-            "formula": "",
+            "formula": None,
             "Note": "This is a 2D Plotter",
             "solve_method": "",
             "plot_method": False,

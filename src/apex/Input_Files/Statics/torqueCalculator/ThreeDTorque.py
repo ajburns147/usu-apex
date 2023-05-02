@@ -22,7 +22,7 @@ class ThreeDTorque(TopicFactory):
 
         self.info = {
              "input": self.input_dict,
-             "formula": "",
+             "formula": None,
              "Note": "This is a one dimensional torque calculator",
              "solve_method": "",
              "plot_method": False,

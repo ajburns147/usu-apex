@@ -27,7 +27,7 @@ class MohrsCircle(TopicFactory):
 
         self.info = {
              "input": self.input_dict,
-             "formula": "",
+             "formula": None,
              "Note": "This is Mohr's Circle",
              "solve_method": "",
              "plot_method": False,

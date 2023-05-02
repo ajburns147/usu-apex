@@ -25,7 +25,7 @@ class Cantilever(TopicFactory):
 
         self.info = {
             "input": self.input_dict,
-            "formula": "",
+            "formula": None,
             "Note": """
 This is a cantilerver beam solver. Input all of the x force 
 components into the text box separated by a space. All moments
