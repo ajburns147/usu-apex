@@ -3,7 +3,7 @@ import os
 import unittest
 
 
-class TestInputFiles(unittest.TestCase):
+class TestInitFiles(unittest.TestCase):
 
     def setUp(self):
         super().setUp()
@@ -18,6 +18,3 @@ class TestInputFiles(unittest.TestCase):
 
             with self.subTest(directory=root):
                 self.assertIn("__init__.py", files, f"{root=} missing __init__.py file")
-
-
-
