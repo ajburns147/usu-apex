@@ -32,4 +32,5 @@ class TestSolver(unittest.TestCase):
                     self.info["input"]["b"]["value"] = b
                     self.info["input"]["c"]["value"] = c
 
-                    Solver.solve(self.info)
+                    with self.subTest(f"Fuzz testing for {a=} {b=} {c=}"):
+                        Solver.solve(self.info)
