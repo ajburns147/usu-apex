@@ -30,8 +30,6 @@ def solve(info):
     output_dict = deepcopy(inputs)
     extra = bonus_method(info)
 
-
-
     if formula is not None:
         soln = solveEquation(formula, inputs)
         list_to_5_sig_figs(soln)
@@ -99,7 +97,6 @@ def unitConvert(inputs, solve_method):
         my_obj = class_obj()
 
         unit_dict = my_obj.giveDict()
-
 
         if safe_float(inputs[variable]["value"]) and solve_method != "beam":
             inputs[variable]["value"] = unit_dict[inputs[variable]["unit"]] * safe_float(inputs[variable]["value"])
