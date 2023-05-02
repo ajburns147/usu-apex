@@ -27,7 +27,7 @@ class TestInputFiles(unittest.TestCase):
             with self.subTest(module=module_name):
                 self.assertIsNotNone(my_obj)
 
-    def test_have_correct_dict(self):
+    def test_have_all_needed_items_in_info(self):
         for path in self.all_input_files:
             module_name = path.split('.')[-1]
             module = importlib.import_module(f"apex.{path}")
