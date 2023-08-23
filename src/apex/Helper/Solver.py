@@ -86,20 +86,8 @@ def unit_convert(inputs, solve_method):
     """
     for i, variable in enumerate(inputs):
         dimension = inputs[variable]['dimension']
-        # mod_name = f"apex.Units.{inputs[variable]['dimension']}"
-        # module = importlib.import_module(mod_name)
 
-        # class_obj = None
-        # class_count = 0
-        # for name, obj in module.__dict__.items():
-        #     if isinstance(obj, type):
-        #         class_count += 1
-        #         if class_count == 2:
-        #             class_obj = obj
-        #             break
-
-        # my_obj = class_obj()
-        unit_dict = UnitHelper.get_unit_dict(dimension)#my_obj.giveDict()
+        unit_dict = UnitHelper.get_unit_dict(dimension)
 
         if safe_float(inputs[variable]["value"]) and solve_method != "beam":
             inputs[variable]["value"] = unit_dict[inputs[variable]["unit"]] * safe_float(inputs[variable]["value"])
