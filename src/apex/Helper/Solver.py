@@ -1,9 +1,10 @@
-import importlib
+# import importlib
 import sympy as sp
 from sympy import symbols, sympify, Eq
 from math import floor, log10
 from copy import deepcopy
 
+from apex.Helper import UnitHelper
 
 def solve(info):
     """
@@ -84,20 +85,21 @@ def unit_convert(inputs, solve_method):
         solve_method (str): The method used to solve the equation.
     """
     for i, variable in enumerate(inputs):
-        mod_name = f"apex.Units.{inputs[variable]['dimension']}"
-        module = importlib.import_module(mod_name)
+        dimension = inputs[variable]['dimension']
+        # mod_name = f"apex.Units.{inputs[variable]['dimension']}"
+        # module = importlib.import_module(mod_name)
 
-        class_obj = None
-        class_count = 0
-        for name, obj in module.__dict__.items():
-            if isinstance(obj, type):
-                class_count += 1
-                if class_count == 2:
-                    class_obj = obj
-                    break
+        # class_obj = None
+        # class_count = 0
+        # for name, obj in module.__dict__.items():
+        #     if isinstance(obj, type):
+        #         class_count += 1
+        #         if class_count == 2:
+        #             class_obj = obj
+        #             break
 
-        my_obj = class_obj()
-        unit_dict = my_obj.giveDict()
+        # my_obj = class_obj()
+        unit_dict = UnitHelper.get_unit_dict(dimension)#my_obj.giveDict()
 
         if safe_float(inputs[variable]["value"]) and solve_method != "beam":
             inputs[variable]["value"] = unit_dict[inputs[variable]["unit"]] * safe_float(inputs[variable]["value"])

@@ -4,6 +4,7 @@ import tkinter as tk
 from tkinter import ttk
 
 from apex.Helper import Solver
+from apex.Helper import UnitHelper
 
 curr_file = os.path.dirname(__file__) + "/"
 if curr_file == "/":
@@ -85,22 +86,7 @@ def topicSelect(event):
     # Get the units
     itr = 0
     for i, element in enumerate(info['input']):
-        # print(f"Units.{inputs[element][2]}")
-        # module = __import__(f"apex.Units.{info['input'][element][2]}", fromlist=['*'])
-        mod_name = f"apex.Units.{info['input'][element]['dimension']}"
-        module = importlib.import_module(mod_name)
-
-        class_obj = None
-        class_count = 0
-        for name, obj in module.__dict__.items():
-            if isinstance(obj, type):
-                class_count += 1
-                if class_count == 2:
-                    class_obj = obj
-                    break
-
-        my_obj = class_obj()
-        unit_dict = my_obj.giveDict()
+        dimension = info['input'][element]['dimension']
 
         label = tk.Label(input_frame, text=element)
         entry = tk.Entry(input_frame)
@@ -110,8 +96,8 @@ def topicSelect(event):
         else:
             entry.insert(0, info['input'][element]["default_value"])
 
-        unit = ttk.Combobox(input_frame, values=list(unit_dict.keys()))
-        unit.set(list(unit_dict.keys())[0])
+        unit = ttk.Combobox(input_frame, values=UnitHelper.get_all_units(dimension))
+        unit.set(UnitHelper.get_base_unit(dimension))
         label.grid(row=itr, column=0)
         entry.grid(row=itr, column=1)
         unit.grid(row=itr, column=2)
