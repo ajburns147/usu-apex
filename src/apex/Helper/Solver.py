@@ -1,7 +1,5 @@
-# import importlib
 import sympy as sp
 from sympy import symbols, sympify, Eq
-from math import floor, log10
 from copy import deepcopy
 
 from apex.Helper import UnitHelper
@@ -38,8 +36,7 @@ def solve(info):
         info["output"] = bonus_method(info)
     else:
         # Solve the equation using the provided formula
-        soln = solve_equation(formula, inputs)
-        list_to_5_sig_figs(soln)
+        sol = solve_equation(formula, inputs)
 
         # Update the output_dict with the computed solutions
         for variable in inputs:
@@ -47,7 +44,7 @@ def solve(info):
                 output_dict[variable]["value"] = safe_float(inputs[variable]["value"])
             else:
                 try:
-                    output_dict[variable]["value"] = soln
+                    output_dict[variable]["value"] = sol
                 except Exception:
                     pass
 
@@ -121,27 +118,11 @@ def solve_equation(formula, inputs):
             continue
 
     sol = sp.solve(eqn)
-    return sol
 
+    # Ensure the solution is in 5 sig figs
+    try:  # if list
+        rounded_sol = [sp.N(s, 5) for s in sol]
+    except AttributeError:    # if dict
+        rounded_sol = [{key: sp.N(value, 5)} for solution in sol for key, value in solution.items()]
 
-def list_to_5_sig_figs(soln):
-    """
-    Takes a list and rounds the solutions to 5 significant figures.
-
-    Args:
-        soln (list): The solutions of the equation.
-
-    Returns:
-        N/A: Mutates the provided list
-    """
-    for i, element in enumerate(soln):
-        if type(element) in [dict, complex]:
-            continue
-
-        if element == 0:
-            continue
-
-        try:
-            soln[i] = round(element, -int(floor(log10(abs(element)))) + 4)
-        except TypeError:
-            continue
+    return rounded_sol
