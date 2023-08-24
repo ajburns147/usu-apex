@@ -7,17 +7,17 @@ class Stress(TopicFactory):
         self.input_dict = {
             "F": {
                 "default_value": 3,
-                "dimension": "length",
+                "dimension": "force",
             },
 
             "A": {
                 "default_value": 4,
-                "dimension": "length",
+                "dimension": "area",
             },
 
             "stress": {
                 "default_value": None,
-                "dimension": "length",
+                "dimension": "stress",
             },
         }
 

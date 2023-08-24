@@ -22,7 +22,7 @@ class Law_of_Cosines(TopicFactory):
 
             "A": {
                 "default_value": None,
-                "dimension": "length",
+                "dimension": "angle",
             },
         }
 
