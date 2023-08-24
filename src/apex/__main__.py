@@ -118,7 +118,7 @@ def execute():
         if isinstance(child, tk.Label):
             label_txt = child.cget("text")
             info['input'][label_txt]["value"] = input_children[itr + 1].get()
-            info['input'][label_txt]["unit"] = input_children[itr + 2].get()
+            info['input'][label_txt]["wanted_unit"] = input_children[itr + 2].get()
         itr += 1
 
     # Call the solver to solve the equation
@@ -136,7 +136,7 @@ def execute():
     for i in info['input']:
         label = tk.Label(outputwin, text=i)
         entry = tk.Label(outputwin, text=str(output_info['input'][i]["value"]))
-        unit = tk.Label(outputwin, text=output_info['input'][i]["unit"])
+        unit = tk.Label(outputwin, text=output_info['input'][i]["wanted_unit"])
         label.grid(row=itr, column=0)
         entry.grid(row=itr, column=1)
         unit.grid(row=itr, column=2)
@@ -148,7 +148,7 @@ def execute():
     for i in output_info['output']:
         label = tk.Label(outputwin, text=i)
         entry = tk.Label(outputwin, text=str(output_info['output'][i]["value"]))
-        unit = ttk.Label(outputwin, text=output_info['output'][i]["unit"])
+        unit = ttk.Label(outputwin, text=output_info['output'][i]["wanted_unit"])
         label.grid(row=itr, column=0)
         entry.grid(row=itr, column=1)
         unit.grid(row=itr, column=2)

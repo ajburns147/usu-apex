@@ -5,6 +5,7 @@ from copy import deepcopy
 from apex.Helper import UnitHelper
 
 def solve(info):
+    print(info)
     """
     Solves an equation and/or performs unit conversion on the input dictionary.
 
@@ -26,7 +27,7 @@ def solve(info):
             inputs[variable]["value"] = ""
 
     # Perform unit conversion based on the specified unit for each variable
-    unit_convert(inputs, solve_method)
+    input_unit_convert(inputs, solve_method)
 
     # Create a deep copy of the inputs to store the output values
     output_dict = deepcopy(inputs)
@@ -47,6 +48,8 @@ def solve(info):
                     output_dict[variable]["value"] = sol
                 except Exception:
                     pass
+
+        output_unit_convert(output_dict)
 
         info["output"] = output_dict
 
@@ -73,7 +76,7 @@ def safe_float(value):
         return None
 
 
-def unit_convert(inputs, solve_method):
+def input_unit_convert(inputs, solve_method):
     """
     Converts the input values to their specified unit in the input dict.
 
@@ -87,8 +90,31 @@ def unit_convert(inputs, solve_method):
         unit_dict = UnitHelper.get_unit_dict(dimension)
 
         if safe_float(inputs[variable]["value"]) and solve_method != "beam":
-            inputs[variable]["value"] = unit_dict[inputs[variable]["unit"]] * safe_float(inputs[variable]["value"])
+            inputs[variable]["value"] = unit_dict[inputs[variable]["wanted_unit"]] * safe_float(inputs[variable]["value"])
+            inputs[variable]["curr_unit"] = UnitHelper.get_base_unit(dimension)
 
+
+def output_unit_convert(outputs):
+    for variable in outputs:
+        dimension = outputs[variable]['dimension']
+        unit_dict = UnitHelper.get_unit_dict(dimension)
+        wanted_unit = outputs[variable]["wanted_unit"]
+
+        value = outputs[variable]["value"]
+
+        # Check if the value is a list
+        if isinstance(value, list):
+            # Perform element-wise division by the unit conversion factor
+            converted_values = [safe_float(v) / unit_dict[wanted_unit] if safe_float(v) is not None else None for v in
+                                value]
+
+            outputs[variable]["value"] = converted_values
+        else:
+            # Perform division for a single value
+            converted_value = safe_float(value) / unit_dict[wanted_unit] if safe_float(value) is not None else None
+            outputs[variable]["value"] = converted_value
+
+        outputs[variable]["curr_unit"] = wanted_unit
 
 def solve_equation(formula, inputs):
     """
@@ -126,3 +152,31 @@ def solve_equation(formula, inputs):
         rounded_sol = [{key: sp.N(value, 5)} for solution in sol for key, value in solution.items()]
 
     return rounded_sol
+
+
+if __name__ == "__main__":
+    a_val = 3
+    b_val = 4
+    c_val = ""
+
+    info = {
+               'input': {
+                   'a': {
+                       'default_value': 3, 'dimension': 'length', 'value': a_val, 'wanted_unit': 'm'
+                   },
+                   'b': {
+                       'default_value': 4, 'dimension': 'length', 'value': b_val, 'wanted_unit': 'km'
+                   },
+                   'c': {
+                       'default_value': None, 'dimension': 'length', 'value': c_val, 'wanted_unit': 'km'}
+               },
+               'formula': 'a**2 + b**2 == c**2',
+               'Note': "This is Pythagoras's theorem",
+               'solve_method': '',
+               'plot_method': False,
+               'Bonus': None
+    }
+
+    output = solve(info)['output']
+    for i in output:
+        print(f"{i} : {output[i]}")
