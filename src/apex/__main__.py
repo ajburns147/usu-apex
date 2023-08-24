@@ -11,7 +11,7 @@ if curr_file == "/":
     curr_file = ""
 
 
-# Custom os.listdir() that excluds __init__.py and __pycache__
+# Custom os.listdir() that excludes __init__.py and __pycache__
 def os_list_dir(path):
     elements = []
     with os.scandir(path) as entries:

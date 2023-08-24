@@ -27,7 +27,7 @@ def solve(info):
             inputs[variable]["value"] = ""
 
     # Perform unit conversion based on the specified unit for each variable
-    input_unit_convert(inputs, solve_method)
+    input_unit_convert(inputs)
 
     # Create a deep copy of the inputs to store the output values
     output_dict = deepcopy(inputs)
@@ -76,45 +76,62 @@ def safe_float(value):
         return None
 
 
-def input_unit_convert(inputs, solve_method):
+def input_unit_convert(inputs):
     """
     Converts the input values to their specified unit in the input dict.
 
     Args:
         inputs (dict): A dictionary containing the input values, which are a subdict of the master info object.
-        solve_method (str): The method used to solve the equation.
     """
-    for i, variable in enumerate(inputs):
+    for variable in inputs:
         dimension = inputs[variable]['dimension']
+        from_unit = inputs[variable]['wanted_unit']
+        to_unit = UnitHelper.get_base_unit(dimension)
 
-        unit_dict = UnitHelper.get_unit_dict(dimension)
+        value = inputs[variable]['value']
+        value = safe_float(value)
 
-        if safe_float(inputs[variable]["value"]) and solve_method != "beam":
-            inputs[variable]["value"] = unit_dict[inputs[variable]["wanted_unit"]] * safe_float(inputs[variable]["value"])
-            inputs[variable]["curr_unit"] = UnitHelper.get_base_unit(dimension)
+        if not value:
+           pass
+        elif isinstance(value, float) or isinstance(value, int):
+            value = float(value)
+            inputs[variable]["value"] = UnitHelper.convert(dimension, value, from_unit, to_unit)
+        elif isinstance(value, list):
+            value = [UnitHelper.convert(dimension, float(val), from_unit, to_unit) for val in value]
+            inputs[variable]["value"] = value
+        else:
+            raise RuntimeError(f"Bad conversion for {value} ({type(value)})")
+
+        inputs[variable]["curr_unit"] = UnitHelper.get_base_unit(dimension)
 
 
 def output_unit_convert(outputs):
+    """
+    Converts the input values to their specified unit in the input dict.
+
+    Args:
+        outputs (dict): A dictionary containing the input values, which are a subdict of the master info object.
+    """
     for variable in outputs:
         dimension = outputs[variable]['dimension']
-        unit_dict = UnitHelper.get_unit_dict(dimension)
-        wanted_unit = outputs[variable]["wanted_unit"]
+        from_unit = UnitHelper.get_base_unit(dimension)
+        to_unit = outputs[variable]['wanted_unit']
 
-        value = outputs[variable]["value"]
+        value = outputs[variable]['value']
+        value = safe_float(value)
 
-        # Check if the value is a list
-        if isinstance(value, list):
-            # Perform element-wise division by the unit conversion factor
-            converted_values = [safe_float(v) / unit_dict[wanted_unit] if safe_float(v) is not None else None for v in
-                                value]
-
-            outputs[variable]["value"] = converted_values
+        if not value:
+            pass
+        elif isinstance(value, float) or isinstance(value, int):
+            value = float(value)
+            outputs[variable]["value"] = UnitHelper.convert(dimension, value, from_unit, to_unit)
+        elif isinstance(value, list):
+            value = [UnitHelper.convert(dimension, float(val), from_unit, to_unit) for val in value]
+            outputs[variable]["value"] = value
         else:
-            # Perform division for a single value
-            converted_value = safe_float(value) / unit_dict[wanted_unit] if safe_float(value) is not None else None
-            outputs[variable]["value"] = converted_value
+            raise RuntimeError(f"Bad conversion for {value}")
 
-        outputs[variable]["curr_unit"] = wanted_unit
+        outputs[variable]["curr_unit"] = outputs[variable]["wanted_unit"]
 
 def solve_equation(formula, inputs):
     """
@@ -155,8 +172,8 @@ def solve_equation(formula, inputs):
 
 
 if __name__ == "__main__":
-    a_val = 3
-    b_val = 4
+    a_val = "3"
+    b_val = "4"
     c_val = ""
 
     info = {

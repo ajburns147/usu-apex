@@ -10,7 +10,10 @@ def get_unit_dict(dimension):
 def get_base_unit(dimension):
     return get_all_units(dimension)[0]
 
-
+def convert(dimension, value, from_unit, to_unit):
+    unit_dict = get_unit_dict(dimension)
+    converted_value = value*unit_dict[from_unit]/unit_dict[to_unit]
+    return converted_value
 
 
 master_dict = {
@@ -128,3 +131,5 @@ if __name__ == "__main__":
     print(get_all_dimensions())
     print(get_all_units("angle"))
     print(get_base_unit("angle"))
+
+    print(convert(dimension="mass", value=10, from_unit="lb", to_unit="oz"))
